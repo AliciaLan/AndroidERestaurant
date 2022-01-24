@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">AndroidERestaurant</string>
+    <string name="title">E-Restaurant</string>
+    <string name="content_description_logo">Logo</string>
     <string name="entree">Entrée</string>
     <string name="plat">Plat</string>
     <string name="dessert">Dessert</string>

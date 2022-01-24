@@ -8,46 +8,77 @@
 
     <Button
         android:id="@+id/button_entree"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginTop="150dp"
         android:layout_marginEnd="150dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="25dp"
         android:onClick="clickEntree"
         android:text="@string/entree"
         app:layout_constraintBottom_toTopOf="@+id/button_plat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/button_plat"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="150dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="25dp"
         android:onClick="clickPlat"
         android:text="@string/plat"
         app:layout_constraintBottom_toTopOf="@+id/button_dessert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_entree" />
+        app:layout_constraintTop_toBottomOf="@+id/button_entree"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/button_dessert"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="150dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="200dp"
         android:onClick="clickDessert"
         android:text="@string/dessert"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_plat" />
+        app:layout_constraintTop_toBottomOf="@+id/button_plat"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="@string/title"
+        android:textColor="#039BE5"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.549" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/content_description_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.007"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

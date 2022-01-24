@@ -17,6 +17,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun clickEntree(v : View) {
+        createToast("Entrée")
         val intent = Intent(this, CategoryActivity::class.java).apply {
             putExtra(TITLE_CATEGORY, getString(R.string.entree))
         }
@@ -25,6 +26,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun clickPlat(v : View) {
+        createToast("Plat")
         val intent = Intent(this, CategoryActivity::class.java).apply {
             putExtra(TITLE_CATEGORY, getString(R.string.plat))
         }
@@ -33,10 +35,15 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun clickDessert(v : View) {
+        createToast("Dessert")
         val intent = Intent(this, CategoryActivity::class.java).apply {
             putExtra(TITLE_CATEGORY, getString(R.string.dessert))
         }
         startActivity(intent)
         Log.d("LOG", "HomeActivity stop")
+    }
+
+    private fun createToast (txt : String) {
+        Toast.makeText(this, txt, Toast.LENGTH_SHORT).show()
     }
 }
