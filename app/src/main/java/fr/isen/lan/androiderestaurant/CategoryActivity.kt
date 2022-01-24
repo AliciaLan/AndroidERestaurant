@@ -3,22 +3,27 @@ package fr.isen.lan.androiderestaurant
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.widget.Button
 import android.widget.TextView
+import fr.isen.lan.androiderestaurant.databinding.ActivityCategoryBinding
+import fr.isen.lan.androiderestaurant.databinding.ActivityHomeBinding
 
 class CategoryActivity : AppCompatActivity() {
+    private lateinit var binding : ActivityCategoryBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_category)
 
-        val message = intent.getStringExtra(TITLE_CATEGORY)
-        findViewById<TextView>(R.id.text_category).apply {
-            text = message
+        binding = ActivityCategoryBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        val category = intent.getStringExtra(TITLE_CATEGORY)
+        binding.categoryTitle.text = category
+
+        binding.buttonBack.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
-    }
-
-    fun back(v : View) {
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
     }
 }

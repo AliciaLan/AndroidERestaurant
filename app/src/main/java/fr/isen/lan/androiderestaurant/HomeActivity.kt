@@ -4,46 +4,41 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Toast
+import fr.isen.lan.androiderestaurant.databinding.ActivityHomeBinding
+// import android.widget.Toast
 
 
-val TITLE_CATEGORY = "title"
+const val TITLE_CATEGORY = "title"
 
 class HomeActivity : AppCompatActivity() {
+    private lateinit var binding : ActivityHomeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-    }
 
-    fun clickEntree(v : View) {
-        createToast("Entrée")
-        val intent = Intent(this, CategoryActivity::class.java).apply {
-            putExtra(TITLE_CATEGORY, getString(R.string.entree))
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        binding.buttonStarter.setOnClickListener {
+            changeActivity(getString(R.string.starter))
         }
-        startActivity(intent)
-        Log.d("LOG", "HomeActivity stop")
-    }
 
-    fun clickPlat(v : View) {
-        createToast("Plat")
-        val intent = Intent(this, CategoryActivity::class.java).apply {
-            putExtra(TITLE_CATEGORY, getString(R.string.plat))
+        binding.buttonMainDish.setOnClickListener {
+            changeActivity(getString(R.string.mainDish))
         }
-        startActivity(intent)
-        Log.d("LOG", "HomeActivity stop")
-    }
 
-    fun clickDessert(v : View) {
-        createToast("Dessert")
-        val intent = Intent(this, CategoryActivity::class.java).apply {
-            putExtra(TITLE_CATEGORY, getString(R.string.dessert))
+        binding.buttonDessert.setOnClickListener {
+            changeActivity(getString(R.string.dessert))
         }
-        startActivity(intent)
-        Log.d("LOG", "HomeActivity stop")
     }
 
-    private fun createToast (txt : String) {
-        Toast.makeText(this, txt, Toast.LENGTH_SHORT).show()
+    private fun changeActivity(category : String) {
+        // Toast.makeText(this, category, Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, CategoryActivity::class.java).apply {
+            putExtra(TITLE_CATEGORY, category)
+        }
+        Log.d("LOG", "HomeActivity stop")
+        startActivity(intent)
     }
 }
