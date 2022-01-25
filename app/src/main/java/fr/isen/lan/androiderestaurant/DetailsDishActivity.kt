@@ -3,6 +3,7 @@ package fr.isen.lan.androiderestaurant
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import fr.isen.lan.androiderestaurant.databinding.ActivityDetailsDishBinding
+import fr.isen.lan.androiderestaurant.model.DishModel
 
 class DetailsDishActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDetailsDishBinding
@@ -17,7 +18,7 @@ class DetailsDishActivity : AppCompatActivity() {
             finish()
         }
 
-        val dish : DishViewModel = intent.getSerializableExtra(TITLE_DISH) as DishViewModel
+        val dish : DishModel = intent.getSerializableExtra(TITLE_DISH) as DishModel
         binding.dishTitle.text = dish.title
         binding.dishDescription.text = dish.description
         binding.dishPrice.text = dish.price

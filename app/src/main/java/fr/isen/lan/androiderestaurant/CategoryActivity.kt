@@ -5,10 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import fr.isen.lan.androiderestaurant.databinding.ActivityCategoryBinding
+import fr.isen.lan.androiderestaurant.model.DishModel
 
 const val TITLE_DISH = "titleDish"
 
-class CategoryActivity : AppCompatActivity(), CellClickListener {
+class CategoryActivity : AppCompatActivity() {
     private lateinit var binding : ActivityCategoryBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,28 +18,20 @@ class CategoryActivity : AppCompatActivity(), CellClickListener {
         binding = ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val category = intent.getStringExtra(TITLE_CATEGORY)
-        binding.categoryTitle.text = category
+        binding.categoryTitle.text = intent.getStringExtra(TITLE_CATEGORY)
 
-        binding.categoryButtonBack.setOnClickListener {
-            finish()
-        }
+        binding.categoryList.layoutManager = LinearLayoutManager(this)
 
-        val recyclerView = binding.categoryList
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        
-        val dish = ArrayList<DishViewModel>()
+        val dishes = ArrayList<DishModel>()
         for (i in 1..10) {
-            dish.add(DishViewModel(R.drawable.logo, "Item $i", "desc item $i", "$i"))
+            dishes.add(DishModel(R.drawable.logo, "Item $i", "desc item $i", "$i"))
         }
 
-        recyclerView.adapter = DishAdapter(dish, this)
-    }
-
-    override fun onCellClickListener(dish : DishViewModel) {
-        val intent = Intent(this, DetailsDishActivity::class.java).apply {
-            putExtra(TITLE_DISH, dish)
+        binding.categoryList.adapter = DishAdapter(dishes) {
+            val intent = Intent(this, DetailsDishActivity::class.java).apply {
+                putExtra(TITLE_DISH, it)
+            }
+            startActivity(intent)
         }
-        startActivity(intent)
     }
 }
