@@ -17,8 +17,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         binding.buttonStarter.setOnClickListener {
             changeActivity(getString(R.string.starter))

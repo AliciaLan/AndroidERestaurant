@@ -2,6 +2,7 @@
     <string name="app_name">AndroidERestaurant</string>
     <string name="title">E-Restaurant</string>
     <string name="contentDescriptionLogo">Logo</string>
+    <string name="contentDescriptionListImg">Image</string>
     <string name="starter">Entrées</string>
     <string name="mainDish">Plats</string>
     <string name="dessert">Desserts</string>

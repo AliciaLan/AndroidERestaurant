@@ -3,10 +3,8 @@ package fr.isen.lan.androiderestaurant
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import fr.isen.lan.androiderestaurant.databinding.ActivityCategoryBinding
-import fr.isen.lan.androiderestaurant.databinding.ActivityHomeBinding
 
 class CategoryActivity : AppCompatActivity() {
     private lateinit var binding : ActivityCategoryBinding
@@ -15,8 +13,7 @@ class CategoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityCategoryBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         val category = intent.getStringExtra(TITLE_CATEGORY)
         binding.categoryTitle.text = category
@@ -25,5 +22,15 @@ class CategoryActivity : AppCompatActivity() {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
+
+        val recyclerView = binding.listCategory
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        
+        val data = ArrayList<ItemsViewModel>()
+        for (i in 1..10) {
+            data.add(ItemsViewModel(R.drawable.logo, "Item $i"))
+        }
+
+        recyclerView.adapter = CustomAdapter(data)
     }
 }
