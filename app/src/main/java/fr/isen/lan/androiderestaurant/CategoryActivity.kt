@@ -6,7 +6,9 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import fr.isen.lan.androiderestaurant.databinding.ActivityCategoryBinding
 
-class CategoryActivity : AppCompatActivity() {
+const val TITLE_DISH = "titleDish"
+
+class CategoryActivity : AppCompatActivity(), CellClickListener {
     private lateinit var binding : ActivityCategoryBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,19 +20,25 @@ class CategoryActivity : AppCompatActivity() {
         val category = intent.getStringExtra(TITLE_CATEGORY)
         binding.categoryTitle.text = category
 
-        binding.buttonBack.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+        binding.buttonBackCategory.setOnClickListener {
+            finish()
         }
 
         val recyclerView = binding.listCategory
         recyclerView.layoutManager = LinearLayoutManager(this)
         
-        val data = ArrayList<ItemsViewModel>()
+        val data = ArrayList<DishViewModel>()
         for (i in 1..10) {
-            data.add(ItemsViewModel(R.drawable.logo, "Item $i"))
+            data.add(DishViewModel(R.drawable.logo, "Item $i"))
         }
 
-        recyclerView.adapter = CustomAdapter(data)
+        recyclerView.adapter = CustomAdapter(data, this)
+    }
+
+    override fun onCellClickListener(dish : DishViewModel) {
+        val intent = Intent(this, DetailsDishActivity::class.java).apply {
+            putExtra(TITLE_DISH, dish.text)
+        }
+        startActivity(intent)
     }
 }

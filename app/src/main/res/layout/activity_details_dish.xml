@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CategoryActivity">
+    tools:context=".DetailsDishActivity">
 
     <TextView
-        android:id="@+id/categoryTitle"
+        android:id="@+id/dishTitle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -16,14 +16,14 @@
         android:textColor="#03A9F4"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonBackCategory"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonBackDetails"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonBackCategory"
-        app:layout_constraintTop_toTopOf="@+id/buttonBackCategory"
+        app:layout_constraintStart_toEndOf="@+id/buttonBackDetails"
+        app:layout_constraintTop_toTopOf="@+id/buttonBackDetails"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/buttonBackCategory"
+        android:id="@+id/buttonBackDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -32,15 +32,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listCategory"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryTitle" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
