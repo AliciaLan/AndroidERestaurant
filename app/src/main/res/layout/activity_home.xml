@@ -7,7 +7,7 @@
     tools:context=".HomeActivity">
 
     <Button
-        android:id="@+id/buttonStarter"
+        android:id="@+id/homeButtonStarter"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
@@ -15,14 +15,14 @@
         android:layout_marginEnd="150dp"
         android:layout_marginBottom="25dp"
         android:text="@string/starter"
-        app:layout_constraintBottom_toTopOf="@+id/buttonMainDish"
+        app:layout_constraintBottom_toTopOf="@+id/homeButtonMainDish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImg"
+        app:layout_constraintTop_toBottomOf="@+id/homeLogoImg"
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/buttonMainDish"
+        android:id="@+id/homeButtonMainDish"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
@@ -30,14 +30,14 @@
         android:layout_marginEnd="150dp"
         android:layout_marginBottom="25dp"
         android:text="@string/mainDish"
-        app:layout_constraintBottom_toTopOf="@+id/buttonDessert"
+        app:layout_constraintBottom_toTopOf="@+id/homeButtonDessert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonStarter"
+        app:layout_constraintTop_toBottomOf="@+id/homeButtonStarter"
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/buttonDessert"
+        android:id="@+id/homeButtonDessert"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
@@ -48,7 +48,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonMainDish"
+        app:layout_constraintTop_toBottomOf="@+id/homeButtonMainDish"
         tools:ignore="TextContrastCheck" />
 
     <TextView
@@ -61,13 +61,13 @@
         android:textColor="#039BE5"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/logoImg"
+        app:layout_constraintBottom_toBottomOf="@+id/homeLogoImg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/logoImg"
-        app:layout_constraintTop_toTopOf="@+id/logoImg" />
+        app:layout_constraintStart_toEndOf="@+id/homeLogoImg"
+        app:layout_constraintTop_toTopOf="@+id/homeLogoImg" />
 
     <ImageView
-        android:id="@+id/logoImg"
+        android:id="@+id/homeLogoImg"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:contentDescription="@string/contentDescriptionLogo"

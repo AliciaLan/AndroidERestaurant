@@ -19,15 +19,15 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonStarter.setOnClickListener {
+        binding.homeButtonStarter.setOnClickListener {
             changeActivity(getString(R.string.starter))
         }
 
-        binding.buttonMainDish.setOnClickListener {
+        binding.homeButtonMainDish.setOnClickListener {
             changeActivity(getString(R.string.mainDish))
         }
 
-        binding.buttonDessert.setOnClickListener {
+        binding.homeButtonDessert.setOnClickListener {
             changeActivity(getString(R.string.dessert))
         }
     }

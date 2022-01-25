@@ -16,14 +16,14 @@
         android:textColor="#03A9F4"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonBackCategory"
+        app:layout_constraintBottom_toBottomOf="@+id/categoryButtonBack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonBackCategory"
-        app:layout_constraintTop_toTopOf="@+id/buttonBackCategory"
+        app:layout_constraintStart_toEndOf="@+id/categoryButtonBack"
+        app:layout_constraintTop_toTopOf="@+id/categoryButtonBack"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/buttonBackCategory"
+        android:id="@+id/categoryButtonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -34,7 +34,7 @@
         tools:ignore="TextContrastCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listCategory"
+        android:id="@+id/categoryList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"

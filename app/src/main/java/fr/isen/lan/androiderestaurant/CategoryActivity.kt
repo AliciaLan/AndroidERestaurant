@@ -20,11 +20,11 @@ class CategoryActivity : AppCompatActivity(), CellClickListener {
         val category = intent.getStringExtra(TITLE_CATEGORY)
         binding.categoryTitle.text = category
 
-        binding.buttonBackCategory.setOnClickListener {
+        binding.categoryButtonBack.setOnClickListener {
             finish()
         }
 
-        val recyclerView = binding.listCategory
+        val recyclerView = binding.categoryList
         recyclerView.layoutManager = LinearLayoutManager(this)
         
         val dish = ArrayList<DishViewModel>()
