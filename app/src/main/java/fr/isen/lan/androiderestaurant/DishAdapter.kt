@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter(private val mList: List<DishViewModel>, private val cellClickListener: CellClickListener) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class DishAdapter(private val mList: List<DishViewModel>, private val cellClickListener: CellClickListener) : RecyclerView.Adapter<DishAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_view_design, parent, false)
@@ -18,7 +18,7 @@ class CustomAdapter(private val mList: List<DishViewModel>, private val cellClic
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val dishesViewModel = mList[position]
         holder.imageView.setImageResource(dishesViewModel.image)
-        holder.textView.text = dishesViewModel.text
+        holder.textView.text = dishesViewModel.title
         holder.itemView.setOnClickListener {
             cellClickListener.onCellClickListener(dishesViewModel)
         }

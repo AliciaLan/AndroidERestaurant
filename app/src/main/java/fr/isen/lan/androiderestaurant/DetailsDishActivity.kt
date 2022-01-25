@@ -1,6 +1,5 @@
 package fr.isen.lan.androiderestaurant
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import fr.isen.lan.androiderestaurant.databinding.ActivityDetailsDishBinding
@@ -14,11 +13,14 @@ class DetailsDishActivity : AppCompatActivity() {
         binding = ActivityDetailsDishBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonBackDetails.setOnClickListener {
+        binding.dishButtonBack.setOnClickListener {
             finish()
         }
 
-        val dish = intent.getStringExtra(TITLE_DISH)
-        binding.dishTitle.text = dish
+        val dish : DishViewModel = intent.getSerializableExtra(TITLE_DISH) as DishViewModel
+        binding.dishTitle.text = dish.title
+        binding.dishDescription.text = dish.description
+        binding.dishPrice.text = dish.price
+        binding.dishImage.setImageResource(dish.image)
     }
 }

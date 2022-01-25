@@ -27,17 +27,17 @@ class CategoryActivity : AppCompatActivity(), CellClickListener {
         val recyclerView = binding.listCategory
         recyclerView.layoutManager = LinearLayoutManager(this)
         
-        val data = ArrayList<DishViewModel>()
+        val dish = ArrayList<DishViewModel>()
         for (i in 1..10) {
-            data.add(DishViewModel(R.drawable.logo, "Item $i"))
+            dish.add(DishViewModel(R.drawable.logo, "Item $i", "desc item $i", "$i"))
         }
 
-        recyclerView.adapter = CustomAdapter(data, this)
+        recyclerView.adapter = DishAdapter(dish, this)
     }
 
     override fun onCellClickListener(dish : DishViewModel) {
         val intent = Intent(this, DetailsDishActivity::class.java).apply {
-            putExtra(TITLE_DISH, dish.text)
+            putExtra(TITLE_DISH, dish)
         }
         startActivity(intent)
     }
