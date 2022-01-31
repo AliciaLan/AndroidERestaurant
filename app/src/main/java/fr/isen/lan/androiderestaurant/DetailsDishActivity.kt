@@ -23,6 +23,12 @@ class DetailsDishActivity : AppCompatActivity() {
         binding.dishTitle.text = dish.name_fr
         binding.dishPrice.text = (dish.prices[0].price + " €")
 
+        var ingredients = ""
+        for (i in dish.ingredients) {
+            ingredients += (i.name_fr + ", ")
+        }
+        binding.dishIngredients.text = ingredients
+
         if (dish.images[0] != "") {
             Picasso.get()
                 .load(dish.images[0])
