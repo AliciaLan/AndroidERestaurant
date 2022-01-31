@@ -6,9 +6,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import fr.isen.lan.androiderestaurant.databinding.CategoryCellBinding
-import fr.isen.lan.androiderestaurant.model.DishModel
+import fr.isen.lan.androiderestaurant.model.Dish
 
-class DishAdapter(private val dishes: List<DishModel>, private val onDishClick : (DishModel) -> Unit) : RecyclerView.Adapter<DishAdapter.DishViewHolder>() {
+class DishAdapter(private val dishes: List<Dish>, private val onDishClick : (Dish) -> Unit) : RecyclerView.Adapter<DishAdapter.DishViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishViewHolder {
         val binding = CategoryCellBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
@@ -18,8 +18,8 @@ class DishAdapter(private val dishes: List<DishModel>, private val onDishClick :
 
     override fun onBindViewHolder(holder: DishViewHolder, position: Int) {
         val dish = dishes[position]
-        holder.imageView.setImageResource(dish.image)
-        holder.textView.text = dish.title
+        //holder.imageView.setImageResource(R.drawable.logo)
+        holder.textView.text = dish.name_fr
         holder.itemView.setOnClickListener {
             onDishClick(dish)
         }
@@ -30,7 +30,7 @@ class DishAdapter(private val dishes: List<DishModel>, private val onDishClick :
     }
 
     class DishViewHolder(binding : CategoryCellBinding) : RecyclerView.ViewHolder(binding.root) {
-        val imageView: ImageView = binding.listImage
+       // val imageView: ImageView = binding.listImage
         val textView: TextView = binding.listTitle
     }
 }

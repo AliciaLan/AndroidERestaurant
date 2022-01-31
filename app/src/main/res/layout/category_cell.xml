@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutList"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp"
@@ -21,16 +21,16 @@
 
         <ImageView
             android:id="@+id/listImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:contentDescription="@string/contentDescriptionListImg" />
 
         <TextView
             android:id="@+id/listTitle"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>

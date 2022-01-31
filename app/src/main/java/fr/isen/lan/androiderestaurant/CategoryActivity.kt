@@ -4,15 +4,19 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
 import fr.isen.lan.androiderestaurant.databinding.ActivityCategoryBinding
-import fr.isen.lan.androiderestaurant.model.DishModel
+import fr.isen.lan.androiderestaurant.model.Dish
+import fr.isen.lan.androiderestaurant.model.RequestResult
 import org.json.JSONObject
 
-const val TITLE_DISH = "titleDish"
+const val DISH = "dish"
 
 class CategoryActivity : AppCompatActivity() {
     private lateinit var binding : ActivityCategoryBinding
@@ -27,40 +31,45 @@ class CategoryActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.categoryTitle.text = intent.getStringExtra(TITLE_CATEGORY)
+        val category = intent.getStringExtra(TITLE_CATEGORY)
+        binding.categoryTitle.text = category
 
-        binding.categoryList.layoutManager = LinearLayoutManager(this)
 
-        val dishes = ArrayList<DishModel>()
-        for (i in 1..10) {
-            dishes.add(DishModel(R.drawable.logo, "Item $i", "desc item $i", "$i"))
-        }
-
-        postVolley()
-
-        binding.categoryList.adapter = DishAdapter(dishes) {
-            val intent = Intent(this, DetailsDishActivity::class.java).apply {
-                putExtra(TITLE_DISH, it)
-            }
-            startActivity(intent)
-        }
-    }
-
-    private fun postVolley() {
         val url = "http://test.api.catering.bluecodegames.com/menu"
 
-        val params = HashMap<String,Number>()
+        val params = HashMap<String, Number>()
         params["id_shop"] = 1
         val jsonObject = JSONObject(params as Map<*, *>)
 
         val request = JsonObjectRequest(
-            Request.Method.POST,url,jsonObject,
+            Request.Method.POST, url, jsonObject,
             {
-                Log.d("API", it.toString())
+                val json = Gson().fromJson(it.toString(), RequestResult::class.java)
+
+                when (category) {
+                    getString(R.string.starter) -> display(json.data[0].items)
+                    getString(R.string.mainDish) -> display(json.data[1].items)
+                    getString(R.string.dessert) -> display(json.data[2].items)
+                }
             }, {
                 Log.e("API", it.toString())
+                Toast.makeText(this, "API request failed", Toast.LENGTH_SHORT).show()
+                finish()
             })
 
+        request.retryPolicy = DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, 0, 1f)
+
         Volley.newRequestQueue(this).add(request)
+    }
+
+    private fun display(dishesList : List<Dish>) {
+        binding.categoryList.layoutManager = LinearLayoutManager(this)
+
+        binding.categoryList.adapter = DishAdapter(dishesList) {
+            val intent = Intent(this, DetailsDishActivity::class.java).apply {
+                putExtra(DISH, it)
+            }
+            startActivity(intent)
+        }
     }
 }
