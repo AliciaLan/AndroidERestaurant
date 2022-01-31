@@ -34,7 +34,10 @@ class CategoryActivity : AppCompatActivity() {
         val category = intent.getStringExtra(TITLE_CATEGORY)
         binding.categoryTitle.text = category
 
+        loadDishesFromCategory(category)
+    }
 
+    private fun loadDishesFromCategory(category : String?) {
         val url = "http://test.api.catering.bluecodegames.com/menu"
 
         val params = HashMap<String, Number>()
