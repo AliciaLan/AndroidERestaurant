@@ -2,7 +2,9 @@ package fr.isen.lan.androiderestaurant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import com.squareup.picasso.Picasso
+import com.synnapps.carouselview.ImageListener
 import fr.isen.lan.androiderestaurant.databinding.ActivityDetailsDishBinding
 import fr.isen.lan.androiderestaurant.model.Dish
 
@@ -29,15 +31,23 @@ class DetailsDishActivity : AppCompatActivity() {
         }
         binding.dishIngredients.text = ingredients
 
-        if (dish.images[0] != "") {
-            Picasso.get()
-                .load(dish.images[0])
-                .placeholder(R.drawable.logo)
-                .error(R.drawable.logo)
-                .fit()
-                .into(binding.dishImage)
-        } else {
-            binding.dishImage.setImageResource(R.drawable.logo)
-        }
+        val carouselView = binding.dishImage
+        carouselView.setPageCount(dish.images.size)
+        carouselView.setImageListener(object : ImageListener {
+            override fun setImageForPosition(position: Int, imageView: ImageView) {
+                if (dish.images[0].isNotEmpty()) {
+                    Picasso.get()
+                        .load(dish.images[position])
+                        .placeholder(R.drawable.logo)
+                        .error(R.drawable.logo)
+                        .fit()
+                        .into(imageView)
+                } else {
+                    Picasso.get()
+                        .load(R.drawable.logo)
+                        .into(imageView)
+                }
+            }
+        })
     }
 }

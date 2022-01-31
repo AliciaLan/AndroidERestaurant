@@ -23,7 +23,7 @@ class DishAdapter(private val dishes: List<Dish>, private val onDishClick : (Dis
         holder.name.text = dish.name_fr
         holder.price.text = (dish.prices[0].price + " €")
 
-        if (dish.images[0] != "") {
+        if (dish.images[0].isNotEmpty()) {
             Picasso.get()
                 .load(dish.images[0])
                 .placeholder(R.drawable.logo)
