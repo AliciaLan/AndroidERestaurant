@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import fr.isen.lan.androiderestaurant.databinding.ActivityHomeBinding
-// import android.widget.Toast
 
 
 const val TITLE_CATEGORY = "title"
@@ -33,11 +32,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun changeActivity(category : String) {
-        // Toast.makeText(this, category, Toast.LENGTH_SHORT).show()
         val intent = Intent(this, CategoryActivity::class.java).apply {
             putExtra(TITLE_CATEGORY, category)
         }
-        Log.d("LOG", "HomeActivity stop")
         startActivity(intent)
     }
 }

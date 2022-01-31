@@ -18,6 +18,10 @@ class CategoryActivity : AppCompatActivity() {
         binding = ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.categoryButtonBack.setOnClickListener {
+            finish()
+        }
+
         binding.categoryTitle.text = intent.getStringExtra(TITLE_CATEGORY)
 
         binding.categoryList.layoutManager = LinearLayoutManager(this)
