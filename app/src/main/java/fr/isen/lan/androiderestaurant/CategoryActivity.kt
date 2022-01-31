@@ -45,12 +45,7 @@ class CategoryActivity : AppCompatActivity() {
             Request.Method.POST, url, jsonObject,
             {
                 val json = Gson().fromJson(it.toString(), RequestResult::class.java)
-
-                when (category) {
-                    getString(R.string.starter) -> display(json.data[0].items)
-                    getString(R.string.mainDish) -> display(json.data[1].items)
-                    getString(R.string.dessert) -> display(json.data[2].items)
-                }
+                display(json.data.firstOrNull{dish-> dish.name_fr == category}?.items ?: listOf())
             }, {
                 Log.e("API", it.toString())
                 Toast.makeText(this, "API request failed", Toast.LENGTH_SHORT).show()
