@@ -1,19 +1,19 @@
 package fr.isen.lan.androiderestaurant
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import fr.isen.lan.androiderestaurant.databinding.CategoryCellBinding
 import fr.isen.lan.androiderestaurant.model.DishModel
 
 class DishAdapter(private val dishes: List<DishModel>, private val onDishClick : (DishModel) -> Unit) : RecyclerView.Adapter<DishAdapter.DishViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.category_cell, parent, false)
+        val binding = CategoryCellBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return DishViewHolder(view)
+        return DishViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: DishViewHolder, position: Int) {
@@ -29,8 +29,8 @@ class DishAdapter(private val dishes: List<DishModel>, private val onDishClick :
         return dishes.size
     }
 
-    class DishViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.listImage)
-        val textView: TextView = itemView.findViewById(R.id.listTitle)
+    class DishViewHolder(binding : CategoryCellBinding) : RecyclerView.ViewHolder(binding.root) {
+        val imageView: ImageView = binding.listImage
+        val textView: TextView = binding.listTitle
     }
 }
