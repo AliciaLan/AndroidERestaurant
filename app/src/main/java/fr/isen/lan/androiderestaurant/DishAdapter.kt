@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import fr.isen.lan.androiderestaurant.databinding.CategoryCellBinding
 import fr.isen.lan.androiderestaurant.model.Dish
-import org.w3c.dom.Text
 
 class DishAdapter(private val dishes: List<Dish>, private val onDishClick : (Dish) -> Unit) : RecyclerView.Adapter<DishAdapter.DishViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishViewHolder {
@@ -21,7 +20,8 @@ class DishAdapter(private val dishes: List<Dish>, private val onDishClick : (Dis
     override fun onBindViewHolder(holder: DishViewHolder, position: Int) {
         val dish = dishes[position]
         holder.name.text = dish.name_fr
-        holder.price.text = (dish.prices[0].price + " €")
+        val txt = "${dish.prices[0].price} €"
+        holder.price.text = txt
 
         if (dish.images[0].isNotEmpty()) {
             Picasso.get()
