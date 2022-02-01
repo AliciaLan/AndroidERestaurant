@@ -21,7 +21,7 @@ class DetailsDishActivity : AppCompatActivity() {
 
         val dish : Dish = intent.getSerializableExtra(DISH) as Dish
         binding.dishTitle.text = dish.name_fr
-        val txt = "${dish.prices[0].price} €"
+        val txt = "Total : ${dish.prices[0].price} €"
         binding.dishPrice.text = txt
 
         var quantity = 1
@@ -32,7 +32,7 @@ class DetailsDishActivity : AppCompatActivity() {
             if (quantity > 1) {
                 quantity--
                 binding.dishQuantity.text = quantity.toString()
-                val totalPrice = "${price * quantity} €"
+                val totalPrice = "Total : ${price * quantity} €"
                 binding.dishPrice.text = totalPrice
             }
         }
@@ -40,7 +40,7 @@ class DetailsDishActivity : AppCompatActivity() {
         binding.dishMoreButton.setOnClickListener {
             quantity++
             binding.dishQuantity.text = quantity.toString()
-            val totalPrice = "${price * quantity} €"
+            val totalPrice = "Total : ${price * quantity} €"
             binding.dishPrice.text = totalPrice
         }
 
