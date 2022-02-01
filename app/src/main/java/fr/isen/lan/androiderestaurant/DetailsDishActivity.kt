@@ -9,6 +9,7 @@ import fr.isen.lan.androiderestaurant.model.Dish
 
 class DetailsDishActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDetailsDishBinding
+    private lateinit var dish : Dish
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +21,7 @@ class DetailsDishActivity : AppCompatActivity() {
             finish()
         }
 
-        val dish : Dish = intent.getSerializableExtra(DISH) as Dish
+        dish = intent.getSerializableExtra(DISH) as Dish
         binding.dishTitle.text = dish.name_fr
         val txt = "Total : ${dish.prices[0].price} €"
         binding.dishPriceButton.text = txt
@@ -31,13 +32,13 @@ class DetailsDishActivity : AppCompatActivity() {
         binding.dishLessButton.setOnClickListener {
             if (quantity > 1) {
                 quantity--
-                updateQuantityPrice(dish, quantity)
+                updateQuantityPrice(quantity)
             }
         }
 
         binding.dishMoreButton.setOnClickListener {
             quantity++
-            updateQuantityPrice(dish, quantity)
+            updateQuantityPrice(quantity)
         }
 
         binding.dishPriceButton.setOnClickListener {
@@ -68,7 +69,7 @@ class DetailsDishActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateQuantityPrice(dish : Dish, quantity : Int) {
+    private fun updateQuantityPrice(quantity : Int) {
         binding.dishQuantity.text = quantity.toString()
         val price = dish.prices[0].price.toFloat()
         val totalPrice = "Total : ${price * quantity} €"

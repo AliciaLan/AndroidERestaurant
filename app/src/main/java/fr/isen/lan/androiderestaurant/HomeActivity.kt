@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import fr.isen.lan.androiderestaurant.databinding.ActivityHomeBinding
 
-
 const val TITLE_CATEGORY = "title"
 
 class HomeActivity : AppCompatActivity() {
