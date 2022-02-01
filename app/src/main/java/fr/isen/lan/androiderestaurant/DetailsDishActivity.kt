@@ -59,7 +59,6 @@ class DetailsDishActivity : AppCompatActivity() {
                     .load(dish.images[position])
                     .placeholder(R.drawable.logo)
                     .error(R.drawable.logo)
-                    .fit()
                     .into(imageView)
             } else {
                 Picasso.get()

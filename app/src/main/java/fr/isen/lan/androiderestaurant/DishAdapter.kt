@@ -28,7 +28,6 @@ class DishAdapter(private val dishes: List<Dish>, private val onDishClick : (Dis
                 .load(dish.images[0])
                 .placeholder(R.drawable.logo)
                 .error(R.drawable.logo)
-                .fit()
                 .into(holder.image)
         } else {
             holder.image.setImageResource(R.drawable.logo)
