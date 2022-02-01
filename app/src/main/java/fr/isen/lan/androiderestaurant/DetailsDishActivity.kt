@@ -2,6 +2,7 @@ package fr.isen.lan.androiderestaurant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import fr.isen.lan.androiderestaurant.databinding.ActivityDetailsDishBinding
 import fr.isen.lan.androiderestaurant.model.Dish
@@ -22,26 +23,25 @@ class DetailsDishActivity : AppCompatActivity() {
         val dish : Dish = intent.getSerializableExtra(DISH) as Dish
         binding.dishTitle.text = dish.name_fr
         val txt = "Total : ${dish.prices[0].price} €"
-        binding.dishPrice.text = txt
+        binding.dishPriceButton.text = txt
 
         var quantity = 1
         binding.dishQuantity.text = quantity.toString()
-        val price = dish.prices[0].price.toFloat()
 
         binding.dishLessButton.setOnClickListener {
             if (quantity > 1) {
                 quantity--
-                binding.dishQuantity.text = quantity.toString()
-                val totalPrice = "Total : ${price * quantity} €"
-                binding.dishPrice.text = totalPrice
+                updateQuantityPrice(dish, quantity)
             }
         }
 
         binding.dishMoreButton.setOnClickListener {
             quantity++
-            binding.dishQuantity.text = quantity.toString()
-            val totalPrice = "Total : ${price * quantity} €"
-            binding.dishPrice.text = totalPrice
+            updateQuantityPrice(dish, quantity)
+        }
+
+        binding.dishPriceButton.setOnClickListener {
+            Snackbar.make(it, "Ajout au panier", Snackbar.LENGTH_LONG).show()
         }
 
         var ingredients = ""
@@ -66,5 +66,12 @@ class DetailsDishActivity : AppCompatActivity() {
                     .into(imageView)
             }
         }
+    }
+
+    private fun updateQuantityPrice(dish : Dish, quantity : Int) {
+        binding.dishQuantity.text = quantity.toString()
+        val price = dish.prices[0].price.toFloat()
+        val totalPrice = "Total : ${price * quantity} €"
+        binding.dishPriceButton.text = totalPrice
     }
 }
