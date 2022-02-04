@@ -27,10 +27,6 @@ class CategoryActivity : AppCompatActivity() {
         binding = ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.categoryButtonBack.setOnClickListener {
-            finish()
-        }
-
         val category = intent.getStringExtra(TITLE_CATEGORY)
         binding.categoryTitle.text = category
 

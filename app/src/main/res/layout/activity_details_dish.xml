@@ -6,26 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".DetailsDishActivity">
 
-    <Button
-        android:id="@+id/dishButtonBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextContrastCheck" />
-
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/dishImage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         app:fillColor="#FFFFFFFF"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dishButtonBack"
+        app:layout_constraintTop_toTopOf="parent"
         app:pageColor="#00000000"
         app:radius="6dp"
         app:slideInterval="3000"
@@ -58,50 +48,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dishTitle" />
 
-    <LinearLayout
-        android:id="@+id/dishQuantityLayout"
+    <TextView
+        android:id="@+id/dishQuantity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:orientation="horizontal"
+        android:layout_weight="4"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/dishLessButton"
+        app:layout_constraintEnd_toStartOf="@+id/dishMoreButton"
+        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintStart_toEndOf="@+id/dishLessButton"
+        app:layout_constraintTop_toTopOf="@+id/dishMoreButton" />
+
+    <Button
+        android:id="@+id/dishMoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_weight="1"
+        android:text="@string/dishMoreButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dishIngredients"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/dishLessButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_weight="1"
+        android:text="@string/dishLessButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dishIngredients">
-
-        <Button
-            android:id="@+id/dishLessButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/dishLessButton"
-            tools:ignore="TextContrastCheck" />
-
-        <TextView
-            android:id="@+id/dishQuantity"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:textAlignment="center" />
-
-        <Button
-            android:id="@+id/dishMoreButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/dishMoreButton"
-            tools:ignore="TextContrastCheck" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/dishIngredients"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/dishPriceButton"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dishQuantityLayout"
+        app:layout_constraintTop_toBottomOf="@+id/dishQuantity"
         tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

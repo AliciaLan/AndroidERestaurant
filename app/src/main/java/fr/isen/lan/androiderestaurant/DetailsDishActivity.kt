@@ -20,10 +20,6 @@ class DetailsDishActivity : AppCompatActivity() {
         binding = ActivityDetailsDishBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.dishButtonBack.setOnClickListener {
-            finish()
-        }
-
         dish = intent.getSerializableExtra(DISH) as Dish
         binding.dishTitle.text = dish.name_fr
         val txt = "Total : ${dish.prices[0].price} €"
