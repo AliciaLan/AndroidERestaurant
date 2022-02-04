@@ -27,6 +27,10 @@ class HomeActivity : AppCompatActivity() {
         binding.homeButtonDessert.setOnClickListener {
             changeActivity(getString(R.string.dessert))
         }
+
+        binding.homeButtonLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
     }
 
     private fun changeActivity(category : String) {

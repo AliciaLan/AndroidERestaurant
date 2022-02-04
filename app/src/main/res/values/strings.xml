@@ -9,4 +9,15 @@
     <string name="back">&lt;</string>
     <string name="dishLessButton">-</string>
     <string name="dishMoreButton">+</string>
+    <string name="loginTitle">Connexion</string>
+    <string name="firstname">Prénom</string>
+    <string name="lastname">Nom</string>
+    <string name="address">Adresse</string>
+    <string name="email">Email</string>
+    <string name="password">Mot de passe</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loginToSignUp">Déjà inscrit ? Connectez-vous !</string>
+    <string name="validForm">Valider</string>
+    <string name="signupTitle">Inscription</string>
 </resources>
