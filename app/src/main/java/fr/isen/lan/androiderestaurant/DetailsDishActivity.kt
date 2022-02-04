@@ -3,9 +3,12 @@ package fr.isen.lan.androiderestaurant
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import fr.isen.lan.androiderestaurant.databinding.ActivityDetailsDishBinding
 import fr.isen.lan.androiderestaurant.model.Dish
+import fr.isen.lan.androiderestaurant.model.DishBasket
+import java.io.File
 
 class DetailsDishActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDetailsDishBinding
@@ -41,13 +44,15 @@ class DetailsDishActivity : AppCompatActivity() {
             updateQuantityPrice(quantity)
         }
 
+
         binding.dishPriceButton.setOnClickListener {
             Snackbar.make(it, "Ajout au panier", Snackbar.LENGTH_LONG).show()
+            updateFile(DishBasket(dish, quantity))
         }
 
         var ingredients = ""
         for (i in dish.ingredients) {
-            ingredients += (i.name_fr + "\n")
+            ingredients += (i.name_fr + ", ")
         }
         binding.dishIngredients.text = ingredients
 
@@ -73,5 +78,17 @@ class DetailsDishActivity : AppCompatActivity() {
         val price = dish.prices[0].price.toFloat()
         val totalPrice = "Total : ${price * quantity} €"
         binding.dishPriceButton.text = totalPrice
+    }
+
+    private fun updateFile(dishBasket : DishBasket) {
+        val file = File(cacheDir.absolutePath + "/basket.json")
+        var dishesBasket: List<DishBasket> = ArrayList()
+
+        if (file.exists()) {
+            dishesBasket = Gson().fromJson(file.readText(), List::class.java) as List<DishBasket>
+        }
+
+        dishesBasket = dishesBasket + dishBasket
+        file.writeText(Gson().toJson(dishesBasket))
     }
 }
