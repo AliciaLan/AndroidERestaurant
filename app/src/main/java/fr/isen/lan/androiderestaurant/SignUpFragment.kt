@@ -51,11 +51,10 @@ class SignUpFragment : Fragment() {
         val request = JsonObjectRequest(
             Request.Method.POST, url, jsonObject,
             {
-                //val json = Gson().fromJson(it.toString(), RequestResult::class.java)
                 Log.d("response", it.toString())
             }, {
                 Log.e("API", it.toString())
-             // Toast.makeText(context, "API request failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "API request failed", Toast.LENGTH_SHORT).show()
             }
         )
 
