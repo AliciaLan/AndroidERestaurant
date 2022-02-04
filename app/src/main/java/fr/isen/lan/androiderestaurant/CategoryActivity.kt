@@ -49,7 +49,8 @@ class CategoryActivity : AppCompatActivity() {
                 Log.e("API", it.toString())
                 Toast.makeText(this, "API request failed", Toast.LENGTH_SHORT).show()
                 finish()
-            })
+            }
+        )
 
         request.retryPolicy = DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, 0, 1f)
 
