@@ -12,6 +12,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import fr.isen.lan.androiderestaurant.databinding.FragmentSignUpBinding
+import fr.isen.lan.androiderestaurant.model.SignUpData
 import org.json.JSONObject
 
 class SignUpFragment : Fragment() {
@@ -32,20 +33,40 @@ class SignUpFragment : Fragment() {
         }
 
         binding.signupButton.setOnClickListener {
-            signUp()
+            val signUpData = SignUpData(
+                binding.signupFirstnameEditText.text.toString(),
+                binding.signupLastnameEditText.text.toString(),
+                binding.signupAddressEditText.text.toString(),
+                binding.signupEmailEditText.text.toString(),
+                binding.signupPasswordEditText.text.toString()
+            )
+
+            if (signUpData.firstname != "" && signUpData.lastname != "" && signUpData.address != "") {
+                if (android.util.Patterns.EMAIL_ADDRESS.matcher(signUpData.email).matches()) {
+                    if (signUpData.password.length > 8) {
+                        signUp(signUpData)
+                    } else {
+                        Toast.makeText(context, "Merci d'entrer un mot de passe d'au moins 8 caractères", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(context, "Merci d'entrer un email valide", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(context, "Merci de remplir tous les champs", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
-    private fun signUp() {
+    private fun signUp(signUpData : SignUpData) {
         val url = "http://test.api.catering.bluecodegames.com/user/register"
 
         val params = HashMap<String, Any>()
         params["id_shop"] = 1
-        params["firstname"] = binding.signupFirstnameEditText.text.toString()
-        params["lastname"] = binding.signupLastnameEditText.text.toString()
-        params["address"] = binding.signupAddressEditText.text.toString()
-        params["email"] = binding.signupEmailEditText.text.toString()
-        params["password"] = binding.signupPasswordEditText.text.toString()
+        params["firstname"] = signUpData.firstname
+        params["lastname"] = signUpData.lastname
+        params["address"] = signUpData.address
+        params["email"] = signUpData.email
+        params["password"] = signUpData.password
         val jsonObject = JSONObject(params as Map<*, *>)
 
         val request = JsonObjectRequest(
