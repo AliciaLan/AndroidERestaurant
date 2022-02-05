@@ -19,4 +19,5 @@
     <string name="signUpToLogin">Déjà inscrit ? Connectez-vous !</string>
     <string name="validForm">Valider</string>
     <string name="signupTitle">Inscription</string>
+    <string name="commandTitle">Votre commande est en cours de livraison !</string>
 </resources>

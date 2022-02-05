@@ -53,7 +53,8 @@ class LoginFragment : Fragment() {
         val request = JsonObjectRequest(
             Request.Method.POST, url, jsonObject,
             {
-                Log.d("response", it.toString())
+                Toast.makeText(context, "Connexion réussie", Toast.LENGTH_SHORT).show()
+                (activity as? LoginActivity)?.loginToCommand(439) // id de bob
             }, {
                 Log.e("API", it.toString())
                 Toast.makeText(context, "API request failed", Toast.LENGTH_SHORT).show()

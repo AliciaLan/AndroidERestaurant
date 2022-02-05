@@ -72,7 +72,8 @@ class SignUpFragment : Fragment() {
         val request = JsonObjectRequest(
             Request.Method.POST, url, jsonObject,
             {
-                Log.d("response", it.toString())
+                Toast.makeText(context, "Inscription réussie", Toast.LENGTH_SHORT).show()
+                (activity as? LoginActivity)?.signupToLogin()
             }, {
                 Log.e("API", it.toString())
                 Toast.makeText(context, "API request failed", Toast.LENGTH_SHORT).show()
