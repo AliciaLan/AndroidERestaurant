@@ -13,7 +13,7 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import fr.isen.lan.androiderestaurant.databinding.ActivityCategoryBinding
 import fr.isen.lan.androiderestaurant.model.Dish
-import fr.isen.lan.androiderestaurant.model.RequestResult
+import fr.isen.lan.androiderestaurant.model.DishRequestResult
 import org.json.JSONObject
 
 const val DISH = "dish"
@@ -43,7 +43,7 @@ class CategoryActivity : AppCompatActivity() {
         val request = JsonObjectRequest(
             Request.Method.POST, url, jsonObject,
             {
-                val json = Gson().fromJson(it.toString(), RequestResult::class.java)
+                val json = Gson().fromJson(it.toString(), DishRequestResult::class.java)
                 display(json.data.firstOrNull{dish-> dish.name_fr == category}?.items ?: listOf())
             }, {
                 Log.e("API", it.toString())

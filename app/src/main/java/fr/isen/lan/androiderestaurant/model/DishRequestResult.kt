@@ -2,6 +2,6 @@ package fr.isen.lan.androiderestaurant.model
 
 import java.io.Serializable
 
-data class RequestResult(
+data class DishRequestResult(
     val data : List<Category>
 ) : Serializable

@@ -11,8 +11,10 @@ import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
 import fr.isen.lan.androiderestaurant.databinding.FragmentLoginBinding
 import fr.isen.lan.androiderestaurant.model.LoginData
+import fr.isen.lan.androiderestaurant.model.LoginRequestResult
 import org.json.JSONObject
 
 class LoginFragment : Fragment() {
@@ -45,7 +47,8 @@ class LoginFragment : Fragment() {
     private fun login(loginData : LoginData) {
         val url = "http://test.api.catering.bluecodegames.com/user/login"
 
-        val params = HashMap<String, String>()
+        val params = HashMap<String, Any>()
+        params["id_shop"] = 1
         params["email"] = loginData.email
         params["password"] = loginData.password
         val jsonObject = JSONObject(params as Map<*, *>)
@@ -53,11 +56,16 @@ class LoginFragment : Fragment() {
         val request = JsonObjectRequest(
             Request.Method.POST, url, jsonObject,
             {
-                Toast.makeText(context, "Connexion réussie", Toast.LENGTH_SHORT).show()
-                (activity as? LoginActivity)?.loginToCommand(439) // id de bob
+                val response = Gson().fromJson(it.toString(), LoginRequestResult::class.java)
+                if (response.data != null) {
+                    Toast.makeText(context, "Connexion réussie", Toast.LENGTH_SHORT).show()
+                    (activity as? LoginActivity)?.loginToCommand(439) // id de bob
+                } else {
+                    Toast.makeText(context, "Mauvais identifiant", Toast.LENGTH_SHORT).show()
+                }
             }, {
                 Log.e("API", it.toString())
-                Toast.makeText(context, "API request failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Ce compte n'existe pas", Toast.LENGTH_SHORT).show()
             }
         )
 
