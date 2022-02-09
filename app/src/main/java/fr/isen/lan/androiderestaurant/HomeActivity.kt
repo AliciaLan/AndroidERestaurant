@@ -1,13 +1,12 @@
 package fr.isen.lan.androiderestaurant
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import fr.isen.lan.androiderestaurant.databinding.ActivityHomeBinding
 
 const val TITLE_CATEGORY = "title"
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : MenuActivity() {
     private lateinit var binding : ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

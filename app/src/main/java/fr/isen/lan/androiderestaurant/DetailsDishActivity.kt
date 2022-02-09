@@ -1,6 +1,5 @@
 package fr.isen.lan.androiderestaurant
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
@@ -8,9 +7,10 @@ import com.squareup.picasso.Picasso
 import fr.isen.lan.androiderestaurant.databinding.ActivityDetailsDishBinding
 import fr.isen.lan.androiderestaurant.model.Dish
 import fr.isen.lan.androiderestaurant.model.DishBasket
+import fr.isen.lan.androiderestaurant.model.ListBasket
 import java.io.File
 
-class DetailsDishActivity : AppCompatActivity() {
+class DetailsDishActivity : MenuActivity() {
     private lateinit var binding : ActivityDetailsDishBinding
     private lateinit var dish : Dish
 
@@ -81,10 +81,10 @@ class DetailsDishActivity : AppCompatActivity() {
         var dishesBasket: List<DishBasket> = ArrayList()
 
         if (file.exists()) {
-            dishesBasket = Gson().fromJson(file.readText(), List::class.java) as List<DishBasket>
+            dishesBasket = Gson().fromJson(file.readText(), ListBasket::class.java).data
         }
 
         dishesBasket = dishesBasket + dishBasket
-        file.writeText(Gson().toJson(dishesBasket))
+        file.writeText(Gson().toJson(ListBasket(dishesBasket)))
     }
 }

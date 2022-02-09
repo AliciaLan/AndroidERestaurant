@@ -1,7 +1,6 @@
 package fr.isen.lan.androiderestaurant
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -18,7 +17,7 @@ import org.json.JSONObject
 
 const val DISH = "dish"
 
-class CategoryActivity : AppCompatActivity() {
+class CategoryActivity : MenuActivity() {
     private lateinit var binding : ActivityCategoryBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

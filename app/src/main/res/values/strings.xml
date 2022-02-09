@@ -20,4 +20,7 @@
     <string name="validForm">Valider</string>
     <string name="signupTitle">Inscription</string>
     <string name="commandTitle">Votre commande est en cours de livraison !</string>
+    <string name="basketTitle">Votre panier</string>
+    <string name="basketButtonBuy">Passer la commande</string>
+    <string name="basketIconDeleteContentDescription">button de suppression</string>
 </resources>

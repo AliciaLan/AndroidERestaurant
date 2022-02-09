@@ -1,7 +1,6 @@
 package fr.isen.lan.androiderestaurant
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -9,7 +8,7 @@ import fr.isen.lan.androiderestaurant.databinding.ActivityLoginBinding
 
 const val ID = "id_user"
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : MenuActivity() {
     private lateinit var binding : ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
