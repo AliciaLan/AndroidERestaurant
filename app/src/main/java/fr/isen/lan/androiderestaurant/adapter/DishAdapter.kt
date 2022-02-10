@@ -21,6 +21,7 @@ class DishAdapter(private val dishes: List<Dish>, private val onDishClick : (Dis
     override fun onBindViewHolder(holder: DishViewHolder, position: Int) {
         val dish = dishes[position]
         holder.name.text = dish.name_fr
+
         val txt = "${dish.prices[0].price} €"
         holder.price.text = txt
 

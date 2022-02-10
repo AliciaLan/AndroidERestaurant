@@ -13,6 +13,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import fr.isen.lan.androiderestaurant.LoginActivity
+import fr.isen.lan.androiderestaurant.R
 import fr.isen.lan.androiderestaurant.databinding.FragmentLoginBinding
 import fr.isen.lan.androiderestaurant.model.LoginData
 import fr.isen.lan.androiderestaurant.model.LoginRequestResult
@@ -59,14 +60,14 @@ class LoginFragment : Fragment() {
             {
                 val response = Gson().fromJson(it.toString(), LoginRequestResult::class.java)
                 if (response.data != null) {
-                    Toast.makeText(context, "Connexion réussie", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.successLogin), Toast.LENGTH_SHORT).show()
                     (activity as? LoginActivity)?.loginToCommand(439) // id de bob
                 } else {
-                    Toast.makeText(context, "Mauvais identifiant", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.failureLogin), Toast.LENGTH_SHORT).show()
                 }
             }, {
                 Log.e("API", it.toString())
-                Toast.makeText(context, "Ce compte n'existe pas", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.APIfailure), Toast.LENGTH_SHORT).show()
             }
         )
 

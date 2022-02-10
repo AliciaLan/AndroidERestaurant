@@ -24,7 +24,7 @@ class BasketActivity : MenuActivity() {
 
         if (file.exists()) {
             val dishesBasket : List<DishBasket> = Gson().fromJson(file.readText(), ListBasket::class.java).data
-            Log.d("list", dishesBasket[0].toString())
+            Log.d("listBasket", dishesBasket[0].toString())
             display(dishesBasket)
         }
 

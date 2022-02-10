@@ -8,8 +8,6 @@ import fr.isen.lan.androiderestaurant.databinding.ActivityLoginBinding
 import fr.isen.lan.androiderestaurant.fragment.LoginFragment
 import fr.isen.lan.androiderestaurant.fragment.SignUpFragment
 
-const val ID = "id_user"
-
 class LoginActivity : MenuActivity() {
     private lateinit var binding : ActivityLoginBinding
 
@@ -38,7 +36,7 @@ class LoginActivity : MenuActivity() {
 
     fun loginToCommand(id : Int) {
         val intent = Intent(this, CommandActivity::class.java).apply {
-            putExtra(ID, id)
+            putExtra(getString(R.string.ExtraIdUser), id)
         }
         startActivity(intent)
     }

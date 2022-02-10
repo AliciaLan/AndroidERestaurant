@@ -40,11 +40,15 @@
         android:id="@+id/basketCellIconDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:contentDescription="@string/basketIconDeleteContentDescription"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/basketCellTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/basketCellTitle"
         app:srcCompat="@android:drawable/ic_menu_delete"
-        tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
+        tools:ignore="RedundantDescriptionCheck,ImageContrastCheck"
+        android:focusable="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

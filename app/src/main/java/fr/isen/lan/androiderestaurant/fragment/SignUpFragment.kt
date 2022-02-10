@@ -12,6 +12,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import fr.isen.lan.androiderestaurant.LoginActivity
+import fr.isen.lan.androiderestaurant.R
 import fr.isen.lan.androiderestaurant.databinding.FragmentSignUpBinding
 import fr.isen.lan.androiderestaurant.model.SignUpData
 import org.json.JSONObject
@@ -47,13 +48,13 @@ class SignUpFragment : Fragment() {
                     if (signUpData.password.length > 8) {
                         signUp(signUpData)
                     } else {
-                        Toast.makeText(context, "Merci d'entrer un mot de passe d'au moins 8 caractères", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.signupErrorPassword), Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(context, "Merci d'entrer un email valide", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.signupErrorEmail), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(context, "Merci de remplir tous les champs", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.signupErrorOther), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -73,11 +74,11 @@ class SignUpFragment : Fragment() {
         val request = JsonObjectRequest(
             Request.Method.POST, url, jsonObject,
             {
-                Toast.makeText(context, "Inscription réussie", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.successSignup), Toast.LENGTH_SHORT).show()
                 (activity as? LoginActivity)?.signupToLogin()
             }, {
                 Log.e("API", it.toString())
-                Toast.makeText(context, "API request failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.APIfailure), Toast.LENGTH_SHORT).show()
             }
         )
 

@@ -19,8 +19,10 @@ class BasketAdapter(private val baskets : List<DishBasket>) : RecyclerView.Adapt
         val basket = baskets[position]
 
         holder.name.text = basket.dish.name_fr
+
         val price = "Total : ${basket.dish.prices[0].price.toFloat() * basket.quantity} €"
         holder.price.text = price
+
         val quantity = "Quantité : ${basket.quantity}"
         holder.quantity.text = quantity
     }

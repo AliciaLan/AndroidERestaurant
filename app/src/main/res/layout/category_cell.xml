@@ -11,7 +11,7 @@
         android:id="@+id/listImage"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:contentDescription="@string/contentDescriptionListImg"
+        android:contentDescription="@string/listImageContentDescription"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

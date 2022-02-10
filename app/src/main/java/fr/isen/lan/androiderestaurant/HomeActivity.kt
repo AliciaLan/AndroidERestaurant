@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import fr.isen.lan.androiderestaurant.databinding.ActivityHomeBinding
 
-const val TITLE_CATEGORY = "title"
-
 class HomeActivity : MenuActivity() {
     private lateinit var binding : ActivityHomeBinding
 
@@ -30,7 +28,7 @@ class HomeActivity : MenuActivity() {
 
     private fun changeActivity(category : String) {
         val intent = Intent(this, CategoryActivity::class.java).apply {
-            putExtra(TITLE_CATEGORY, category)
+            putExtra(getString(R.string.ExtraCategoryTitle), category)
         }
         startActivity(intent)
     }

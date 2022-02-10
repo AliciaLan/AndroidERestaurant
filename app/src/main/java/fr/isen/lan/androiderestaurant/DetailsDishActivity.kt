@@ -20,9 +20,9 @@ class DetailsDishActivity : MenuActivity() {
         binding = ActivityDetailsDishBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        dish = intent.getSerializableExtra(DISH) as Dish
+        dish = intent.getSerializableExtra(getString(R.string.ExtraDishName)) as Dish
         binding.dishTitle.text = dish.name_fr
-        val txt = "Total : ${dish.prices[0].price} €"
+        val txt = getString(R.string.totalPrice) + dish.prices[0].price + " €"
         binding.dishPriceButton.text = txt
 
         var quantity = 1
@@ -42,7 +42,7 @@ class DetailsDishActivity : MenuActivity() {
 
 
         binding.dishPriceButton.setOnClickListener {
-            Snackbar.make(it, "Ajout au panier", Snackbar.LENGTH_LONG).show()
+            Snackbar.make(it, getString(R.string.addToBasket), Snackbar.LENGTH_LONG).show()
             updateFile(DishBasket(dish, quantity))
         }
 

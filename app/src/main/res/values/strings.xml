@@ -1,15 +1,41 @@
 <resources>
+    <!-- Général -->
     <string name="app_name">Alicia E-Restaurant</string>
-    <string name="title">E-Restaurant</string>
-    <string name="contentDescriptionLogo">Logo</string>
-    <string name="contentDescriptionListImg">Image</string>
+    <string name="title">Alicia E-Restaurant</string>
+    <string name="logoContentDescription">Logo</string>
+    <string name="APIfailure">API request failed</string>
+    <string name="totalPrice">Total : </string>
+
+    <!-- Extra -->
+    <string name="ExtraCategoryTitle">categoryTitle</string>
+    <string name="ExtraDishName">dishName</string>
+    <string name="ExtraIdUser">idUser</string>
+
+    <!-- BasketActivity -->
+    <string name="basketTitle">Votre panier</string>
+    <string name="basketButtonBuy">Passer la commande</string>
+    <string name="basketIconDeleteContentDescription">button de suppression</string>
+    <string name="quantity">Quantité : </string>
+
+    <!-- CategoryActivity -->
+    <string name="listImageContentDescription">Image</string>
+
+    <!-- CommandActivity -->
+    <string name="commandTitle">Votre commande est en cours de livraison !</string>
+
+    <!-- DetailsDishActivity -->
+    <string name="dishLessButton">-</string>
+    <string name="dishMoreButton">+</string>
+    <string name="addToBasket">Ajout au panier réussi</string>
+
+    <!-- HomeActivity -->
     <string name="starter">Entrées</string>
     <string name="mainDish">Plats</string>
     <string name="dessert">Desserts</string>
-    <string name="back">&lt;</string>
-    <string name="dishLessButton">-</string>
-    <string name="dishMoreButton">+</string>
+
+    <!-- LoginActivity -->
     <string name="loginTitle">Connexion</string>
+    <string name="signupTitle">Inscription</string>
     <string name="firstname">Prénom</string>
     <string name="lastname">Nom</string>
     <string name="address">Adresse</string>
@@ -18,9 +44,14 @@
     <string name="loginToSignUp">Pas encore de compte ? Inscrivez-vous !</string>
     <string name="signUpToLogin">Déjà inscrit ? Connectez-vous !</string>
     <string name="validForm">Valider</string>
-    <string name="signupTitle">Inscription</string>
-    <string name="commandTitle">Votre commande est en cours de livraison !</string>
-    <string name="basketTitle">Votre panier</string>
-    <string name="basketButtonBuy">Passer la commande</string>
-    <string name="basketIconDeleteContentDescription">button de suppression</string>
+    <string name="successLogin">Connexion réussie</string>
+    <string name="failureLogin">Mauvais identifiant</string>
+    <string name="successSignup">Inscription réussie</string>
+    <string name="signupErrorPassword">Merci d\'entrer un mot de passe d\'au moins 8 caractères</string>
+    <string name="signupErrorEmail">Merci d\'entrer un email valide</string>
+    <string name="signupErrorOther">Merci de remplir tous les champs</string>
+
+    <!-- MenuActivity -->
+
+
 </resources>

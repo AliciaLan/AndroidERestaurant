@@ -16,8 +16,6 @@ import fr.isen.lan.androiderestaurant.model.Dish
 import fr.isen.lan.androiderestaurant.model.DishRequestResult
 import org.json.JSONObject
 
-const val DISH = "dish"
-
 class CategoryActivity : MenuActivity() {
     private lateinit var binding : ActivityCategoryBinding
 
@@ -27,7 +25,7 @@ class CategoryActivity : MenuActivity() {
         binding = ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val category = intent.getStringExtra(TITLE_CATEGORY)
+        val category = intent.getStringExtra(getString(R.string.ExtraCategoryTitle))
         binding.categoryTitle.text = category
 
         loadDishesFromCategory(category)
@@ -47,7 +45,7 @@ class CategoryActivity : MenuActivity() {
                 display(json.data.firstOrNull{dish-> dish.name_fr == category}?.items ?: listOf())
             }, {
                 Log.e("API", it.toString())
-                Toast.makeText(this, "API request failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.APIfailure), Toast.LENGTH_SHORT).show()
                 finish()
             }
         )
@@ -62,7 +60,7 @@ class CategoryActivity : MenuActivity() {
 
         binding.categoryList.adapter = DishAdapter(dishesList) {
             val intent = Intent(this, DetailsDishActivity::class.java).apply {
-                putExtra(DISH, it)
+                putExtra(getString(R.string.ExtraDishName), it)
             }
             startActivity(intent)
         }
