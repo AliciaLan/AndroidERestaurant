@@ -45,7 +45,7 @@ class DetailsDishActivity : MenuActivity() {
         binding.dishPriceButton.setOnClickListener {
             Snackbar.make(it, getString(R.string.addToBasket), Snackbar.LENGTH_LONG).show()
             updateFile(DishBasket(dish, quantity))
-            updateSharedPreferences(quantity)
+            updateSharedPreferences(quantity, (dish.prices[0].price.toFloat() * quantity))
         }
 
         var ingredients = ""
@@ -90,10 +90,15 @@ class DetailsDishActivity : MenuActivity() {
         file.writeText(Gson().toJson(ListBasket(dishesBasket)))
     }
 
-    private fun updateSharedPreferences(quantity: Int) {
+    private fun updateSharedPreferences(quantity: Int, price: Float) {
         val sharedPreferences = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE)
+
         val oldQuantity = sharedPreferences.getInt(getString(R.string.spTotalQuantity), 0)
         val newQuantity = oldQuantity + quantity
         sharedPreferences.edit().putInt(getString(R.string.spTotalQuantity), newQuantity).apply()
+
+        val oldPrice = sharedPreferences.getFloat(getString(R.string.spTotalPrice), 0.0f)
+        val newPrice = oldPrice + price
+        sharedPreferences.edit().putFloat(getString(R.string.spTotalPrice), newPrice).apply()
     }
 }

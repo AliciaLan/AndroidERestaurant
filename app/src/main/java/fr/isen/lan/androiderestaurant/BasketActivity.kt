@@ -30,6 +30,9 @@ class BasketActivity : MenuActivity() {
         val quantity = getString(R.string.basketTotalQuantity) + this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).getInt(getString(R.string.spTotalQuantity), 0).toString()
         binding.basketTotalQuantity.text = quantity
 
+        val price = getString(R.string.totalPrice) + this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).getFloat(getString(R.string.spTotalPrice), 0.0f).toString()
+        binding.basketTotalPrice.text = price
+
         binding.basketButtonBuy.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }

@@ -13,6 +13,7 @@
     <!-- Shared Preferences -->
     <string name="spFileName">SharedPreferences</string>
     <string name="spTotalQuantity">totalBasketQuantity</string>
+    <string name="spTotalPrice">totalBasketPrice</string>
 
     <!-- BasketActivity -->
     <string name="basketTitle">Votre panier</string>
