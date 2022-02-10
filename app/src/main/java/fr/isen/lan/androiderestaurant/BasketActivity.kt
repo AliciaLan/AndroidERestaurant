@@ -1,5 +1,6 @@
 package fr.isen.lan.androiderestaurant
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +26,9 @@ class BasketActivity : MenuActivity() {
             val dishesBasket : List<DishBasket> = Gson().fromJson(file.readText(), ListBasket::class.java).data
             display(dishesBasket)
         }
+
+        val quantity = getString(R.string.basketTotalQuantity) + this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).getInt(getString(R.string.spTotalQuantity), 0).toString()
+        binding.basketTotalQuantity.text = quantity
 
         binding.basketButtonBuy.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))

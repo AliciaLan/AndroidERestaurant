@@ -1,5 +1,6 @@
 package fr.isen.lan.androiderestaurant
 
+import android.content.Context
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
@@ -44,6 +45,7 @@ class DetailsDishActivity : MenuActivity() {
         binding.dishPriceButton.setOnClickListener {
             Snackbar.make(it, getString(R.string.addToBasket), Snackbar.LENGTH_LONG).show()
             updateFile(DishBasket(dish, quantity))
+            updateSharedPreferences(quantity)
         }
 
         var ingredients = ""
@@ -86,5 +88,12 @@ class DetailsDishActivity : MenuActivity() {
 
         dishesBasket = dishesBasket + dishBasket
         file.writeText(Gson().toJson(ListBasket(dishesBasket)))
+    }
+
+    private fun updateSharedPreferences(quantity: Int) {
+        val sharedPreferences = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE)
+        val oldQuantity = sharedPreferences.getInt(getString(R.string.spTotalQuantity), 0)
+        val newQuantity = oldQuantity + quantity
+        sharedPreferences.edit().putInt(getString(R.string.spTotalQuantity), newQuantity).apply()
     }
 }
