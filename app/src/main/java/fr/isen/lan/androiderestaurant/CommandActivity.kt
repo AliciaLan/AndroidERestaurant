@@ -24,15 +24,22 @@ class CommandActivity : MenuActivity() {
         binding = ActivityCommandBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        newCommandRequest()
+        val userid = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).getInt(getString(R.string.spUserId), 0)
+
+        if(userid == 0) {
+            Toast.makeText(this, getString(R.string.warningUserLogout), Toast.LENGTH_SHORT).show()
+            finish()
+        } else {
+            newCommandRequest(userid)
+        }
     }
 
-    private fun newCommandRequest() {
+    private fun newCommandRequest(userId : Int) {
         val url = "http://test.api.catering.bluecodegames.com/user/order"
 
         val params = HashMap<String, Any>()
         params["id_shop"] = 1
-        params["id_user"] = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).getInt(getString(R.string.spUserId), 0)
+        params["id_user"] = userId
         params["msg"] = recupBasketFile().toString()
         val jsonObject = JSONObject(params as Map<*, *>)
 

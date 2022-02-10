@@ -29,6 +29,7 @@
     <string name="successCommandTxt">Votre commande est en cours de livraison !</string>
     <string name="failureCommandTxt">Votre commande n\'a pas aboutie, nous en sommes désolé</string>
     <string name="successCommand">Commande réussie</string>
+    <string name="warningUserLogout">Vous devez être connecté pour passer commande</string>
 
     <!-- DetailsDishActivity -->
     <string name="dishLessButton">-</string>
@@ -60,6 +61,11 @@
     <string name="signupErrorOther">Merci de remplir tous les champs</string>
 
     <!-- MenuActivity -->
+
+    <!-- UserActivity -->
+    <string name="userTitle">Bienvenu sur votre espace abonné !</string>
+    <string name="userLogoutButton">Déconnexion</string>
+    <string name="successLogout">Vous êtes déconnecté</string>
 
 
 </resources>

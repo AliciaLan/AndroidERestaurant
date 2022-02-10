@@ -1,7 +1,6 @@
 package fr.isen.lan.androiderestaurant
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -37,6 +36,6 @@ class LoginActivity : MenuActivity() {
 
     fun loginToCommand(id : Int) {
         this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).edit().putInt(getString(R.string.spUserId), id).apply()
-        startActivity(Intent(this, CommandActivity::class.java))
+        finish()
     }
 }
