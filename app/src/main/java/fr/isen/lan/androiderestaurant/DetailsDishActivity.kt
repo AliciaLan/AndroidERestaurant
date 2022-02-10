@@ -58,12 +58,12 @@ class DetailsDishActivity : MenuActivity() {
             if (dish.images[0].isNotEmpty()) {
                 Picasso.get()
                     .load(dish.images[position])
-                    .placeholder(R.drawable.logo)
-                    .error(R.drawable.logo)
+                    .placeholder(R.drawable.icon_no_image)
+                    .error(R.drawable.icon_no_image)
                     .into(imageView)
             } else {
                 Picasso.get()
-                    .load(R.drawable.logo)
+                    .load(R.drawable.icon_no_image)
                     .into(imageView)
             }
         }

@@ -1,4 +1,4 @@
-package fr.isen.lan.androiderestaurant
+package fr.isen.lan.androiderestaurant.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

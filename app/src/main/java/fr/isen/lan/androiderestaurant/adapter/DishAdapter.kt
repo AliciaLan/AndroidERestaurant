@@ -1,4 +1,4 @@
-package fr.isen.lan.androiderestaurant
+package fr.isen.lan.androiderestaurant.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import fr.isen.lan.androiderestaurant.R
 import fr.isen.lan.androiderestaurant.databinding.CategoryCellBinding
 import fr.isen.lan.androiderestaurant.model.Dish
 
@@ -26,11 +27,11 @@ class DishAdapter(private val dishes: List<Dish>, private val onDishClick : (Dis
         if (dish.images[0].isNotEmpty()) {
             Picasso.get()
                 .load(dish.images[0])
-                .placeholder(R.drawable.logo)
-                .error(R.drawable.logo)
+                .placeholder(R.drawable.icon_no_image)
+                .error(R.drawable.icon_no_image)
                 .into(holder.image)
         } else {
-            holder.image.setImageResource(R.drawable.logo)
+            holder.image.setImageResource(R.drawable.icon_no_image)
         }
 
         holder.itemView.setOnClickListener {

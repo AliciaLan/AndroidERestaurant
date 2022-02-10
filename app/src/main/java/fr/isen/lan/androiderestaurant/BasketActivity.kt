@@ -1,9 +1,11 @@
 package fr.isen.lan.androiderestaurant
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
+import fr.isen.lan.androiderestaurant.adapter.BasketAdapter
 import fr.isen.lan.androiderestaurant.databinding.ActivityBasketBinding
 import fr.isen.lan.androiderestaurant.model.DishBasket
 import fr.isen.lan.androiderestaurant.model.ListBasket
@@ -24,6 +26,10 @@ class BasketActivity : MenuActivity() {
             val dishesBasket : List<DishBasket> = Gson().fromJson(file.readText(), ListBasket::class.java).data
             Log.d("list", dishesBasket[0].toString())
             display(dishesBasket)
+        }
+
+        binding.basketButtonBuy.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 

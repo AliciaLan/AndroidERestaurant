@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/basket"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/icon_basket"
         android:title="@string/title"
         app:showAsAction="ifRoom" />
 </menu>

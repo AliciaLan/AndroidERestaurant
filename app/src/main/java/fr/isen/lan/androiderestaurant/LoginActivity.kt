@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import fr.isen.lan.androiderestaurant.databinding.ActivityLoginBinding
+import fr.isen.lan.androiderestaurant.fragment.LoginFragment
+import fr.isen.lan.androiderestaurant.fragment.SignUpFragment
 
 const val ID = "id_user"
 

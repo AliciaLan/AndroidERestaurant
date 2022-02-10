@@ -1,4 +1,4 @@
-package fr.isen.lan.androiderestaurant
+package fr.isen.lan.androiderestaurant.fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +11,7 @@ import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import fr.isen.lan.androiderestaurant.LoginActivity
 import fr.isen.lan.androiderestaurant.databinding.FragmentSignUpBinding
 import fr.isen.lan.androiderestaurant.model.SignUpData
 import org.json.JSONObject

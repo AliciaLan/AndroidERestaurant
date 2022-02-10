@@ -10,6 +10,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
+import fr.isen.lan.androiderestaurant.adapter.DishAdapter
 import fr.isen.lan.androiderestaurant.databinding.ActivityCategoryBinding
 import fr.isen.lan.androiderestaurant.model.Dish
 import fr.isen.lan.androiderestaurant.model.DishRequestResult
