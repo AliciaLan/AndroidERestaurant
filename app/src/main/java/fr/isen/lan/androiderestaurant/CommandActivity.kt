@@ -1,5 +1,6 @@
 package fr.isen.lan.androiderestaurant
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -31,7 +32,7 @@ class CommandActivity : MenuActivity() {
 
         val params = HashMap<String, Any>()
         params["id_shop"] = 1
-        params["id_user"] = intent.getIntExtra(getString(R.string.ExtraIdUser), 0)
+        params["id_user"] = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).getInt(getString(R.string.spUserId), 0)
         params["msg"] = recupBasketFile().toString()
         val jsonObject = JSONObject(params as Map<*, *>)
 

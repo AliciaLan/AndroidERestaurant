@@ -8,12 +8,12 @@
     <!-- Extra -->
     <string name="ExtraCategoryTitle">categoryTitle</string>
     <string name="ExtraDishName">dishName</string>
-    <string name="ExtraIdUser">idUser</string>
 
     <!-- Shared Preferences -->
     <string name="spFileName">SharedPreferences</string>
     <string name="spTotalQuantity">totalBasketQuantity</string>
     <string name="spTotalPrice">totalBasketPrice</string>
+    <string name="spUserId">userId</string>
 
     <!-- BasketActivity -->
     <string name="basketTitle">Votre panier</string>

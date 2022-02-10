@@ -34,7 +34,13 @@ class BasketActivity : MenuActivity() {
         binding.basketTotalPrice.text = price
 
         binding.basketButtonBuy.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+            val userId = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).getInt(getString(R.string.spUserId), 0)
+
+            if (userId == 0) {
+                startActivity(Intent(this, LoginActivity::class.java))
+            } else {
+                startActivity(Intent(this, CommandActivity::class.java))
+            }
         }
     }
 
