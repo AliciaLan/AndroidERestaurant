@@ -1,7 +1,6 @@
 <resources>
     <!-- Général -->
     <string name="app_name">Alicia E-Restaurant</string>
-    <string name="title">Alicia E-Restaurant</string>
     <string name="logoContentDescription">Logo</string>
     <string name="APIfailure">API request failed</string>
     <string name="totalPrice">Total : </string>
@@ -21,7 +20,9 @@
     <string name="listImageContentDescription">Image</string>
 
     <!-- CommandActivity -->
-    <string name="commandTitle">Votre commande est en cours de livraison !</string>
+    <string name="successCommandTxt">Votre commande est en cours de livraison !</string>
+    <string name="failureCommandTxt">Votre commande n\'a pas aboutie, nous en sommes désolé</string>
+    <string name="successCommand">Commande réussie</string>
 
     <!-- DetailsDishActivity -->
     <string name="dishLessButton">-</string>
@@ -29,6 +30,7 @@
     <string name="addToBasket">Ajout au panier réussi</string>
 
     <!-- HomeActivity -->
+    <string name="title">E-Restaurant</string>
     <string name="starter">Entrées</string>
     <string name="mainDish">Plats</string>
     <string name="dessert">Desserts</string>

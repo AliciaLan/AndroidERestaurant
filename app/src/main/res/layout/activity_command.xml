@@ -7,10 +7,9 @@
     tools:context=".CommandActivity">
 
     <TextView
-        android:id="@+id/commandTitle"
+        android:id="@+id/commandText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/commandTitle"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
