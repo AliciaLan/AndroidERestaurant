@@ -12,14 +12,14 @@ import fr.isen.lan.androiderestaurant.model.Dish
 
 class DishAdapter(private val dishes: List<Dish>, private val onDishClick : (Dish) -> Unit) : RecyclerView.Adapter<DishAdapter.DishViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishViewHolder {
-        val binding = CategoryCellBinding
-            .inflate(LayoutInflater.from(parent.context), parent, false)
-
-        return DishViewHolder(binding)
+        return DishViewHolder(
+            CategoryCellBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: DishViewHolder, position: Int) {
         val dish = dishes[position]
+
         holder.name.text = dish.name_fr
 
         val txt = "${dish.prices[0].price} €"

@@ -22,7 +22,9 @@ class DetailsDishActivity : MenuActivity() {
         setContentView(binding.root)
 
         dish = intent.getSerializableExtra(getString(R.string.ExtraDishName)) as Dish
+
         binding.dishTitle.text = dish.name_fr
+
         val txt = getString(R.string.totalPrice) + dish.prices[0].price + " €"
         binding.dishPriceButton.text = txt
 
@@ -41,11 +43,11 @@ class DetailsDishActivity : MenuActivity() {
             updateQuantityPrice(quantity)
         }
 
-
         binding.dishPriceButton.setOnClickListener {
             Snackbar.make(it, getString(R.string.addToBasket), Snackbar.LENGTH_LONG).show()
             updateFile(DishBasket(dish, quantity))
             updateSharedPreferences(quantity, (dish.prices[0].price.toFloat() * quantity))
+            finish()
         }
 
         var ingredients = ""
@@ -73,6 +75,7 @@ class DetailsDishActivity : MenuActivity() {
 
     private fun updateQuantityPrice(quantity : Int) {
         binding.dishQuantity.text = quantity.toString()
+
         val price = dish.prices[0].price.toFloat()
         val totalPrice = "Total : ${price * quantity} €"
         binding.dishPriceButton.text = totalPrice

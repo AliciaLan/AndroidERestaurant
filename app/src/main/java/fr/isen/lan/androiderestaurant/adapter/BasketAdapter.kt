@@ -10,10 +10,9 @@ import fr.isen.lan.androiderestaurant.model.DishBasket
 
 class BasketAdapter(private val baskets : List<DishBasket>, private val onBasketClick : (DishBasket) -> Unit) : RecyclerView.Adapter<BasketAdapter.BasketViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BasketViewHolder {
-        val binding = BasketCellBinding
-            .inflate(LayoutInflater.from(parent.context), parent, false)
-
-        return BasketViewHolder(binding)
+        return BasketViewHolder(
+            BasketCellBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: BasketViewHolder, position: Int) {

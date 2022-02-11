@@ -47,24 +47,35 @@ class BasketActivity : MenuActivity() {
     private fun display(dishesList : List<DishBasket>) {
         binding.basketList.layoutManager = LinearLayoutManager(this)
         binding.basketList.adapter = BasketAdapter(dishesList) {
-            val file = File(cacheDir.absolutePath + "/basket.json")
-            var dishesBasket: List<DishBasket> = ArrayList()
-
-            if (file.exists()) {
-                dishesBasket = Gson().fromJson(file.readText(), ListBasket::class.java).data
-            }
-
-            dishesBasket = dishesBasket - it
-            file.writeText(Gson().toJson(ListBasket(dishesBasket)))
-
-            val sharedPreferences = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE)
-
-            val oldQuantity = sharedPreferences.getInt(getString(R.string.spTotalQuantity), 0)
-            val newQuantity = oldQuantity - it.quantity
-            sharedPreferences.edit().putInt(getString(R.string.spTotalQuantity), newQuantity).apply()
-
-            finish()
-            this.recreate()
+            deleteDishBasket(it)
         }
+    }
+
+    private fun deleteDishBasket(dish : DishBasket) {
+        val file = File(cacheDir.absolutePath + "/basket.json")
+        var dishesBasket: List<DishBasket> = ArrayList()
+
+        if (file.exists()) {
+            dishesBasket = Gson().fromJson(file.readText(), ListBasket::class.java).data
+            dishesBasket = dishesBasket - dish
+            updateSharedPreferences(dish.quantity, dish.dish.prices[0].price.toFloat())
+        }
+
+        file.writeText(Gson().toJson(ListBasket(dishesBasket)))
+
+        finish()
+        this.recreate()
+    }
+
+    private fun updateSharedPreferences(quantity: Int, price: Float) {
+        val sharedPreferences = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE)
+
+        val oldQuantity = sharedPreferences.getInt(getString(R.string.spTotalQuantity), 0)
+        val newQuantity = oldQuantity + quantity
+        sharedPreferences.edit().putInt(getString(R.string.spTotalQuantity), newQuantity).apply()
+
+        val oldPrice = sharedPreferences.getFloat(getString(R.string.spTotalPrice), 0.0f)
+        val newPrice = oldPrice - price
+        sharedPreferences.edit().putFloat(getString(R.string.spTotalPrice), newPrice).apply()
     }
 }
