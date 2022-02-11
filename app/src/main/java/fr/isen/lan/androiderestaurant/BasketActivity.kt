@@ -46,6 +46,25 @@ class BasketActivity : MenuActivity() {
 
     private fun display(dishesList : List<DishBasket>) {
         binding.basketList.layoutManager = LinearLayoutManager(this)
-        binding.basketList.adapter = BasketAdapter(dishesList)
+        binding.basketList.adapter = BasketAdapter(dishesList) {
+            val file = File(cacheDir.absolutePath + "/basket.json")
+            var dishesBasket: List<DishBasket> = ArrayList()
+
+            if (file.exists()) {
+                dishesBasket = Gson().fromJson(file.readText(), ListBasket::class.java).data
+            }
+
+            dishesBasket = dishesBasket - it
+            file.writeText(Gson().toJson(ListBasket(dishesBasket)))
+
+            val sharedPreferences = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE)
+
+            val oldQuantity = sharedPreferences.getInt(getString(R.string.spTotalQuantity), 0)
+            val newQuantity = oldQuantity - it.quantity
+            sharedPreferences.edit().putInt(getString(R.string.spTotalQuantity), newQuantity).apply()
+
+            finish()
+            this.recreate()
+        }
     }
 }
