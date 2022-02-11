@@ -4,11 +4,17 @@
     <item
         android:id="@+id/menuButtonUser"
         android:icon="@drawable/icon_user"
-        android:title="@string/title"
+        android:title="@string/menuUserTitle"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menuButtonBasket"
         android:icon="@drawable/icon_basket"
-        android:title="@string/title"
-        app:showAsAction="ifRoom" />
+        android:title="@string/menuBasketTitle"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menuQuantityBasket"
+        android:icon="@drawable/icon_basket"
+        android:title="@string/menuQuantityBasketTitle"
+        app:actionLayout="@layout/custom_menu_item"
+        app:showAsAction="always" />
 </menu>

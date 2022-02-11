@@ -61,6 +61,9 @@
     <string name="signupErrorOther">Merci de remplir tous les champs</string>
 
     <!-- MenuActivity -->
+    <string name="menuBasketTitle">Icone panier</string>
+    <string name="menuQuantityBasketTitle">Quantité d\'item dans le panier</string>
+    <string name="menuUserTitle">Icone utilisateur</string>
 
     <!-- UserActivity -->
     <string name="userTitle">Bienvenu sur votre espace abonné !</string>
