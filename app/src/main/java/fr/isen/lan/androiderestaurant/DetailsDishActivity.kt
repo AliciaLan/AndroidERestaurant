@@ -2,7 +2,7 @@ package fr.isen.lan.androiderestaurant
 
 import android.content.Context
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.widget.Toast
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import fr.isen.lan.androiderestaurant.databinding.ActivityDetailsDishBinding
@@ -44,7 +44,7 @@ class DetailsDishActivity : MenuActivity() {
         }
 
         binding.dishPriceButton.setOnClickListener {
-            Snackbar.make(it, getString(R.string.addToBasket), Snackbar.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.addToBasket), Toast.LENGTH_SHORT).show()
             updateFile(DishBasket(dish, quantity))
             updateSharedPreferences(quantity, (dish.prices[0].price.toFloat() * quantity))
             finish()

@@ -48,6 +48,7 @@ class CommandActivity : MenuActivity() {
             {
                 Toast.makeText(this, getString(R.string.successCommand), Toast.LENGTH_SHORT).show()
                 binding.commandText.text = getString(R.string.successCommandTxt)
+                deleteBasketData()
             }, {
                 Log.e("API", it.toString())
                 Toast.makeText(this, getString(R.string.APIfailure), Toast.LENGTH_SHORT).show()
@@ -60,7 +61,7 @@ class CommandActivity : MenuActivity() {
         Volley.newRequestQueue(this).add(request)
     }
 
-    private fun recupBasketFile() :  List<DishBasket> {
+    private fun recupBasketFile() : List<DishBasket> {
         val file = File(cacheDir.absolutePath + "/basket.json")
         var dishesBasket: List<DishBasket> = ArrayList()
 
@@ -69,5 +70,11 @@ class CommandActivity : MenuActivity() {
         }
 
         return dishesBasket
+    }
+
+    private fun deleteBasketData() {
+        File(cacheDir.absolutePath + "/basket.json").delete()
+        this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).edit().remove(getString(R.string.spTotalPrice)).apply()
+        this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).edit().remove(getString(R.string.spTotalQuantity)).apply()
     }
 }

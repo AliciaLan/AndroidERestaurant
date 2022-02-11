@@ -18,7 +18,9 @@
     <!-- BasketActivity -->
     <string name="basketTitle">Votre panier</string>
     <string name="basketButtonBuy">Passer la commande</string>
-    <string name="basketIconDeleteContentDescription">button de suppression</string>
+    <string name="basketIconDeleteContentDescription">Button de suppression d\'un item</string>
+    <string name="basketButtonDeleteAllContentDescription">Button de suppression de tout le panier</string>
+    <string name="basketDeleteAllTxt">Votre panier a été supprimé</string>
     <string name="quantity">Quantité : </string>
     <string name="basketTotalQuantity">Quantité totale : </string>
 
@@ -69,6 +71,4 @@
     <string name="userTitle">Bienvenu sur votre espace abonné !</string>
     <string name="userLogoutButton">Déconnexion</string>
     <string name="successLogout">Vous êtes déconnecté</string>
-
-
 </resources>

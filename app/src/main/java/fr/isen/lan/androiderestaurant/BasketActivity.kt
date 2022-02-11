@@ -3,6 +3,7 @@ package fr.isen.lan.androiderestaurant
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import fr.isen.lan.androiderestaurant.adapter.BasketAdapter
@@ -42,6 +43,11 @@ class BasketActivity : MenuActivity() {
                 startActivity(Intent(this, CommandActivity::class.java))
             }
         }
+
+        binding.basketButtonDeleteAll.setOnClickListener {
+            deleteBasketData()
+            finish()
+        }
     }
 
     private fun display(dishesList : List<DishBasket>) {
@@ -65,6 +71,13 @@ class BasketActivity : MenuActivity() {
 
         finish()
         this.recreate()
+    }
+
+    private fun deleteBasketData() {
+        File(cacheDir.absolutePath + "/basket.json").delete()
+        this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).edit().remove(getString(R.string.spTotalPrice)).apply()
+        this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).edit().remove(getString(R.string.spTotalQuantity)).apply()
+        Toast.makeText(this, getString(R.string.basketDeleteAllTxt), Toast.LENGTH_SHORT).show()
     }
 
     private fun updateSharedPreferences(quantity: Int, price: Float) {
