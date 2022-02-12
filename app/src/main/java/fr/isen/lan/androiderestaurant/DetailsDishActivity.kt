@@ -2,6 +2,7 @@ package fr.isen.lan.androiderestaurant
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
@@ -77,7 +78,7 @@ class DetailsDishActivity : MenuActivity() {
         binding.dishQuantity.text = quantity.toString()
 
         val price = dish.prices[0].price.toFloat()
-        val totalPrice = "Total : ${price * quantity} €"
+        val totalPrice = getString(R.string.totalPrice) + price * quantity + " €"
         binding.dishPriceButton.text = totalPrice
     }
 
@@ -89,7 +90,18 @@ class DetailsDishActivity : MenuActivity() {
             dishesBasket = Gson().fromJson(file.readText(), ListBasket::class.java).data
         }
 
-        dishesBasket = dishesBasket + dishBasket
+        var dupli = false
+        for (i in dishesBasket.indices) {
+            if (dishesBasket[i].dish == dishBasket.dish) {
+                dishesBasket[i].quantity += dishBasket.quantity
+                dupli = true
+            }
+        }
+
+        if (!dupli) {
+            dishesBasket = dishesBasket + dishBasket
+        }
+
         file.writeText(Gson().toJson(ListBasket(dishesBasket)))
     }
 
