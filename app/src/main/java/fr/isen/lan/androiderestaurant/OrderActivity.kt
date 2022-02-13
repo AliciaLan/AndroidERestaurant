@@ -9,19 +9,22 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
-import fr.isen.lan.androiderestaurant.databinding.ActivityCommandBinding
+import fr.isen.lan.androiderestaurant.databinding.ActivityOrderBinding
 import fr.isen.lan.androiderestaurant.model.DishBasket
 import fr.isen.lan.androiderestaurant.model.ListBasket
 import org.json.JSONObject
 import java.io.File
 
-class CommandActivity : MenuActivity() {
-    private lateinit var binding : ActivityCommandBinding
+/**
+ * Display a message when the order is sent to the API.
+ */
+class OrderActivity : MenuActivity() {
+    private lateinit var binding : ActivityOrderBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityCommandBinding.inflate(layoutInflater)
+        binding = ActivityOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val userid = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).getInt(getString(R.string.spUserId), 0)
@@ -30,11 +33,15 @@ class CommandActivity : MenuActivity() {
             Toast.makeText(this, getString(R.string.warningUserLogout), Toast.LENGTH_SHORT).show()
             finish()
         } else {
-            newCommandRequest(userid)
+            newOrderRequest(userid)
         }
     }
 
-    private fun newCommandRequest(userId : Int) {
+    /**
+     * Send an order request to the API.
+     * @param userId id of the user making the order.
+     */
+    private fun newOrderRequest(userId : Int) {
         val url = "http://test.api.catering.bluecodegames.com/user/order"
 
         val params = HashMap<String, Any>()
@@ -61,6 +68,10 @@ class CommandActivity : MenuActivity() {
         Volley.newRequestQueue(this).add(request)
     }
 
+    /**
+     * Retrieve all the data in the basket file.
+     * @return list of dishes in the basket of the user.
+     */
     private fun recupBasketFile() : List<DishBasket> {
         val file = File(cacheDir.absolutePath + "/basket.json")
         var dishesBasket: List<DishBasket> = ArrayList()
@@ -72,6 +83,9 @@ class CommandActivity : MenuActivity() {
         return dishesBasket
     }
 
+    /**
+     * Delete the basket file and shared preferences (quantity and price).
+     */
     private fun deleteBasketData() {
         File(cacheDir.absolutePath + "/basket.json").delete()
         this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).edit().remove(getString(R.string.spTotalPrice)).apply()

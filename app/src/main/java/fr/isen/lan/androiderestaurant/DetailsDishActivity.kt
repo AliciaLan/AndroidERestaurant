@@ -2,7 +2,6 @@ package fr.isen.lan.androiderestaurant
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
@@ -12,6 +11,9 @@ import fr.isen.lan.androiderestaurant.model.DishBasket
 import fr.isen.lan.androiderestaurant.model.ListBasket
 import java.io.File
 
+/**
+ * Display details of a dish.
+ */
 class DetailsDishActivity : MenuActivity() {
     private lateinit var binding : ActivityDetailsDishBinding
     private lateinit var dish : Dish
@@ -74,6 +76,10 @@ class DetailsDishActivity : MenuActivity() {
         }
     }
 
+    /**
+     * Update the quantity and total price displayed by the layout.
+     * @param quantity quantity chosen by the user.
+     */
     private fun updateQuantityPrice(quantity : Int) {
         binding.dishQuantity.text = quantity.toString()
 
@@ -82,6 +88,10 @@ class DetailsDishActivity : MenuActivity() {
         binding.dishPriceButton.text = totalPrice
     }
 
+    /**
+     * Add a dish and its quantity in the basket file.
+     * @param dishBasket dish to add in the basket.
+     */
     private fun updateFile(dishBasket : DishBasket) {
         val file = File(cacheDir.absolutePath + "/basket.json")
         var dishesBasket: List<DishBasket> = ArrayList()
@@ -105,6 +115,11 @@ class DetailsDishActivity : MenuActivity() {
         file.writeText(Gson().toJson(ListBasket(dishesBasket)))
     }
 
+    /**
+     * Update shared preferences (quantity and price) with the dish added to the basket.
+     * @param quantity quantity of dish to add in the basket.
+     * @param price total price of dishes to add in the basket.
+     */
     private fun updateSharedPreferences(quantity: Int, price: Float) {
         val sharedPreferences = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE)
 

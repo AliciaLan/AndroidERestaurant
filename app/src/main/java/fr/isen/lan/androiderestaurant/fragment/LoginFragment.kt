@@ -19,6 +19,10 @@ import fr.isen.lan.androiderestaurant.model.LoginData
 import fr.isen.lan.androiderestaurant.model.LoginRequestResult
 import org.json.JSONObject
 
+/**
+ * Fragment of [LoginActivity]. Login.
+ * @return Fragment().
+ */
 class LoginFragment : Fragment() {
     private lateinit var binding : FragmentLoginBinding
 
@@ -46,6 +50,10 @@ class LoginFragment : Fragment() {
         }
     }
 
+    /**
+     * Log the user with the API.
+     * @param loginData User's data to login.
+     */
     private fun login(loginData : LoginData) {
         val url = "http://test.api.catering.bluecodegames.com/user/login"
 

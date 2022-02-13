@@ -7,6 +7,9 @@ import android.os.Bundle
 import android.widget.Toast
 import fr.isen.lan.androiderestaurant.databinding.ActivityUserBinding
 
+/**
+ * Display information about a user
+ */
 class UserActivity : AppCompatActivity() {
     private lateinit var binding : ActivityUserBinding
 

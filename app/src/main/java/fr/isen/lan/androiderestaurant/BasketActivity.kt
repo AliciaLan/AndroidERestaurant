@@ -12,6 +12,10 @@ import fr.isen.lan.androiderestaurant.model.DishBasket
 import fr.isen.lan.androiderestaurant.model.ListBasket
 import java.io.File
 
+/**
+ * Display the basket.
+ * Use [BasketAdapter] for RecyclerView.
+ */
 class BasketActivity : MenuActivity() {
     private lateinit var binding : ActivityBasketBinding
 
@@ -40,16 +44,19 @@ class BasketActivity : MenuActivity() {
             if (userId == 0) {
                 startActivity(Intent(this, LoginActivity::class.java))
             } else {
-                startActivity(Intent(this, CommandActivity::class.java))
+                startActivity(Intent(this, OrderActivity::class.java))
             }
         }
 
         binding.basketButtonDeleteAll.setOnClickListener {
             deleteBasketData()
-            finish()
         }
     }
 
+    /**
+     * Display the list of dishes in the recyclerView thanks to [BasketAdapter].
+     * @param dishesList list to display.
+     */
     private fun display(dishesList : List<DishBasket>) {
         binding.basketList.layoutManager = LinearLayoutManager(this)
         binding.basketList.adapter = BasketAdapter(dishesList) {
@@ -57,6 +64,11 @@ class BasketActivity : MenuActivity() {
         }
     }
 
+    /**
+     * Delete a dish from the basket list.
+     * Update shared preferences and basket file.
+     * @param dish dish to delete.
+     */
     private fun deleteDishBasket(dish : DishBasket) {
         val file = File(cacheDir.absolutePath + "/basket.json")
         var dishesBasket: List<DishBasket> = ArrayList()
@@ -73,6 +85,10 @@ class BasketActivity : MenuActivity() {
         this.recreate()
     }
 
+    /**
+     * Delete all data in the basket list.
+     * Delete shared preferences (quantity and price) and basket file.
+     */
     private fun deleteBasketData() {
         File(cacheDir.absolutePath + "/basket.json").delete()
         this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).edit().remove(getString(R.string.spTotalPrice)).apply()
@@ -80,11 +96,16 @@ class BasketActivity : MenuActivity() {
         Toast.makeText(this, getString(R.string.basketDeleteAllTxt), Toast.LENGTH_SHORT).show()
     }
 
+    /**
+     * Update shared preferences with new quantity and price.
+     * @param quantity quantity of the deleted item.
+     * @param price price of the deleted item.
+     */
     private fun updateSharedPreferences(quantity: Int, price: Float) {
         val sharedPreferences = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE)
 
         val oldQuantity = sharedPreferences.getInt(getString(R.string.spTotalQuantity), 0)
-        val newQuantity = oldQuantity + quantity
+        val newQuantity = oldQuantity - quantity
         sharedPreferences.edit().putInt(getString(R.string.spTotalQuantity), newQuantity).apply()
 
         val oldPrice = sharedPreferences.getFloat(getString(R.string.spTotalPrice), 0.0f)

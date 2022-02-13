@@ -7,6 +7,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 
+/**
+ * Manage the actionBar.
+ * Activity extended by all activities of the application.
+ */
 open class MenuActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu, menu)

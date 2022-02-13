@@ -4,6 +4,7 @@
     <string name="logoContentDescription">Logo</string>
     <string name="APIfailure">API request failed</string>
     <string name="totalPrice">Total : </string>
+    <string name="quantity">Quantité : </string>
 
     <!-- Extra -->
     <string name="ExtraCategoryTitle">categoryTitle</string>
@@ -21,17 +22,10 @@
     <string name="basketIconDeleteContentDescription">Button de suppression d\'un item</string>
     <string name="basketButtonDeleteAllContentDescription">Button de suppression de tout le panier</string>
     <string name="basketDeleteAllTxt">Votre panier a été supprimé</string>
-    <string name="quantity">Quantité : </string>
     <string name="basketTotalQuantity">Quantité totale : </string>
 
     <!-- CategoryActivity -->
     <string name="listImageContentDescription">Image</string>
-
-    <!-- CommandActivity -->
-    <string name="successCommandTxt">Votre commande est en cours de livraison !</string>
-    <string name="failureCommandTxt">Votre commande n\'a pas aboutie, nous en sommes désolé</string>
-    <string name="successCommand">Commande réussie</string>
-    <string name="warningUserLogout">Vous devez être connecté pour passer commande</string>
 
     <!-- DetailsDishActivity -->
     <string name="dishLessButton">-</string>
@@ -66,6 +60,12 @@
     <string name="menuBasketTitle">Icone panier</string>
     <string name="menuQuantityBasketTitle">Quantité d\'item dans le panier</string>
     <string name="menuUserTitle">Icone utilisateur</string>
+
+    <!-- OrderActivity -->
+    <string name="successCommandTxt">Votre commande est en cours de livraison !</string>
+    <string name="failureCommandTxt">Votre commande n\'a pas aboutie, nous en sommes désolé</string>
+    <string name="successCommand">Commande réussie</string>
+    <string name="warningUserLogout">Vous devez être connecté pour passer commande</string>
 
     <!-- UserActivity -->
     <string name="userTitle">Bienvenu sur votre espace abonné !</string>

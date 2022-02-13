@@ -16,6 +16,10 @@ import fr.isen.lan.androiderestaurant.model.Dish
 import fr.isen.lan.androiderestaurant.model.DishRequestResult
 import org.json.JSONObject
 
+/**
+ * Display the dishes of a category.
+ * Use [DishAdapter] for RecyclerView.
+ */
 class CategoryActivity : MenuActivity() {
     private lateinit var binding : ActivityCategoryBinding
 
@@ -31,6 +35,10 @@ class CategoryActivity : MenuActivity() {
         loadDishesFromCategory(category)
     }
 
+    /**
+     * Retrieve list of dishes in the category from the API.
+     * @param category category chosen by the user.
+     */
     private fun loadDishesFromCategory(category : String?) {
         val url = "http://test.api.catering.bluecodegames.com/menu"
 
@@ -55,6 +63,10 @@ class CategoryActivity : MenuActivity() {
         Volley.newRequestQueue(this).add(request)
     }
 
+    /**
+     * Display the list of dishes in the recyclerView thanks to [DishAdapter].
+     * @param dishesList list to display.
+     */
     private fun display(dishesList : List<Dish>) {
         binding.categoryList.layoutManager = LinearLayoutManager(this)
 

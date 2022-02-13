@@ -17,6 +17,10 @@ import fr.isen.lan.androiderestaurant.databinding.FragmentSignUpBinding
 import fr.isen.lan.androiderestaurant.model.SignUpData
 import org.json.JSONObject
 
+/**
+ * Fragment of [LoginActivity]. SignUp.
+ * @return Fragment().
+ */
 class SignUpFragment : Fragment() {
     private lateinit var binding : FragmentSignUpBinding
 
@@ -59,6 +63,10 @@ class SignUpFragment : Fragment() {
         }
     }
 
+    /**
+     * Sign Up the user in the API.
+     * @param signUpData User's data to signUp.
+     */
     private fun signUp(signUpData : SignUpData) {
         val url = "http://test.api.catering.bluecodegames.com/user/register"
 
