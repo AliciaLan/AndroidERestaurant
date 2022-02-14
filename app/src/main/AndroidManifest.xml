@@ -22,7 +22,7 @@
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".CommandActivity"
+            android:name=".OrderActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

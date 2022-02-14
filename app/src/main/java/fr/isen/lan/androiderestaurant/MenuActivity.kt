@@ -12,12 +12,22 @@ import android.widget.TextView
  * Activity extended by all activities of the application.
  */
 open class MenuActivity : AppCompatActivity() {
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
+    private var menu : Menu? = null
 
-        menu.findItem(R.id.menuQuantityBasket).actionView.findViewById<TextView>(R.id.menuTextQuantity).text = (this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).getInt(getString(R.string.spTotalQuantity), 0)).toString()
+    override fun onCreateOptionsMenu(myMenu: Menu): Boolean {
+        myMenu.also {
+            menu = it
+            menu.apply {
+                if(this != null) {
+                    menuInflater.inflate(R.menu.menu, this)
 
-        return true
+                    this.findItem(R.id.menuQuantityBasket).actionView.findViewById<TextView>(R.id.menuTextQuantity).text =
+                        (this@MenuActivity.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE)
+                            .getInt(getString(R.string.spTotalQuantity), 0)).toString()
+                }
+                return super.onCreateOptionsMenu(it)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -39,5 +49,14 @@ open class MenuActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onResume() {
+        menu.apply {
+            if(this != null) {
+                this.findItem(R.id.menuQuantityBasket).actionView.findViewById<TextView>(R.id.menuTextQuantity).text = (this@MenuActivity.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).getInt(getString(R.string.spTotalQuantity), 0)).toString()
+            }
+        }
+        super.onResume()
     }
 }

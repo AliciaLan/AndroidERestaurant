@@ -25,6 +25,27 @@ class BasketActivity : MenuActivity() {
         binding = ActivityBasketBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        displayLayout()
+
+        binding.basketButtonDeleteAll.setOnClickListener {
+            deleteBasketData()
+        }
+
+        binding.basketButtonBuy.setOnClickListener {
+            val userId = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).getInt(getString(R.string.spUserId), 0)
+
+            if (userId == 0) {
+                startActivity(Intent(this, LoginActivity::class.java))
+            } else {
+                startActivity(Intent(this, OrderActivity::class.java))
+            }
+        }
+    }
+
+    /**
+     * Display information in the layout
+     */
+    private fun displayLayout () {
         val file = File(cacheDir.absolutePath + "/basket.json")
 
         if (file.exists()) {
@@ -37,20 +58,6 @@ class BasketActivity : MenuActivity() {
 
         val price = getString(R.string.totalPrice) + this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).getFloat(getString(R.string.spTotalPrice), 0.0f).toString()
         binding.basketTotalPrice.text = price
-
-        binding.basketButtonBuy.setOnClickListener {
-            val userId = this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).getInt(getString(R.string.spUserId), 0)
-
-            if (userId == 0) {
-                startActivity(Intent(this, LoginActivity::class.java))
-            } else {
-                startActivity(Intent(this, OrderActivity::class.java))
-            }
-        }
-
-        binding.basketButtonDeleteAll.setOnClickListener {
-            deleteBasketData()
-        }
     }
 
     /**
@@ -76,13 +83,12 @@ class BasketActivity : MenuActivity() {
         if (file.exists()) {
             dishesBasket = Gson().fromJson(file.readText(), ListBasket::class.java).data
             dishesBasket = dishesBasket - dish
-            updateSharedPreferences(dish.quantity, dish.dish.prices[0].price.toFloat())
+            updateSharedPreferences(dish.quantity, dish.dish.prices[0].price.toFloat() * dish.quantity)
         }
 
         file.writeText(Gson().toJson(ListBasket(dishesBasket)))
 
-        finish()
-        this.recreate()
+        displayLayout()
     }
 
     /**
@@ -94,6 +100,8 @@ class BasketActivity : MenuActivity() {
         this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).edit().remove(getString(R.string.spTotalPrice)).apply()
         this.getSharedPreferences(getString(R.string.spFileName), Context.MODE_PRIVATE).edit().remove(getString(R.string.spTotalQuantity)).apply()
         Toast.makeText(this, getString(R.string.basketDeleteAllTxt), Toast.LENGTH_SHORT).show()
+
+        displayLayout()
     }
 
     /**
